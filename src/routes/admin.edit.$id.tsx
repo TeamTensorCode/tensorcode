@@ -36,6 +36,7 @@ function EditProblem() {
         setInitial({
           ...emptyProblem,
           ...row,
+          difficulty: row.difficulty as ProblemFormValue["difficulty"],
           topic: row.topic ?? "",
           starter_code: row.starter_code ?? "",
           solution_code: row.solution_code ?? "",
