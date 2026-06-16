@@ -14,7 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      problems: {
+        Row: {
+          created_at: string
+          description: string
+          difficulty: string
+          display_order: number
+          id: string
+          language: string
+          published: boolean
+          resources: Json
+          slug: string
+          solution_code: string | null
+          solution_explanation: string | null
+          starter_code: string | null
+          title: string
+          topic: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          difficulty: string
+          display_order?: number
+          id?: string
+          language?: string
+          published?: boolean
+          resources?: Json
+          slug: string
+          solution_code?: string | null
+          solution_explanation?: string | null
+          starter_code?: string | null
+          title: string
+          topic?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          difficulty?: string
+          display_order?: number
+          id?: string
+          language?: string
+          published?: boolean
+          resources?: Json
+          slug?: string
+          solution_code?: string | null
+          solution_explanation?: string | null
+          starter_code?: string | null
+          title?: string
+          topic?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
