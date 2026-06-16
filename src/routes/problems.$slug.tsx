@@ -93,9 +93,7 @@ function ProblemPage() {
             {data.topic && (
               <div className="mb-4 text-xs text-muted-foreground">{data.topic}</div>
             )}
-            <div className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/90">
-              {data.description}
-            </div>
+            <Markdown>{data.description}</Markdown>
 
             {resources.length > 0 && (
               <div className="mt-8">
