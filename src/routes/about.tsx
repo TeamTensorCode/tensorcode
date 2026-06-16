@@ -30,6 +30,16 @@ function AboutPage() {
             Everything is free right now — we're testing demand. If this is useful to you,
             tell a friend.
           </p>
+          <p>
+            Questions, feedback, or problem suggestions? Email us at{" "}
+            <a
+              href="mailto:teamtensorcode@gmail.com"
+              className="text-primary underline hover:opacity-80"
+            >
+              teamtensorcode@gmail.com
+            </a>
+            .
+          </p>
         </div>
       </main>
     </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getProblemBySlug } from "@/lib/problems.functions";
 import { SiteHeader, DifficultyBadge } from "@/components/SiteHeader";
 import { Button } from "@/components/ui/button";
+import { Markdown } from "@/components/Markdown";
 
 const problemQuery = (slug: string) =>
   queryOptions({
@@ -92,9 +93,7 @@ function ProblemPage() {
             {data.topic && (
               <div className="mb-4 text-xs text-muted-foreground">{data.topic}</div>
             )}
-            <div className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/90">
-              {data.description}
-            </div>
+            <Markdown>{data.description}</Markdown>
 
             {resources.length > 0 && (
               <div className="mt-8">
@@ -171,8 +170,8 @@ function ProblemPage() {
                   <code>{data.solution_code ?? "// No solution provided yet."}</code>
                 </pre>
                 {data.solution_explanation && (
-                  <div className="border-t border-border px-4 py-3 text-sm text-foreground/90">
-                    {data.solution_explanation}
+                  <div className="border-t border-border px-4 py-3">
+                    <Markdown>{data.solution_explanation}</Markdown>
                   </div>
                 )}
               </div>

@@ -71,7 +71,7 @@ function HomePage() {
           <div className="flex flex-col items-start gap-5">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
-              Free while we test demand
+              Free for a limited time
             </span>
             <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
               LeetCode for <span className="brand-gradient-text">AI engineers.</span>
