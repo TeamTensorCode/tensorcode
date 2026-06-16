@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getProblemBySlug } from "@/lib/problems.functions";
 import { SiteHeader, DifficultyBadge } from "@/components/SiteHeader";
 import { Button } from "@/components/ui/button";
+import { Markdown } from "@/components/Markdown";
 
 const problemQuery = (slug: string) =>
   queryOptions({
