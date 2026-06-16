@@ -170,8 +170,8 @@ function ProblemPage() {
                   <code>{data.solution_code ?? "// No solution provided yet."}</code>
                 </pre>
                 {data.solution_explanation && (
-                  <div className="border-t border-border px-4 py-3 text-sm text-foreground/90">
-                    {data.solution_explanation}
+                  <div className="border-t border-border px-4 py-3">
+                    <Markdown>{data.solution_explanation}</Markdown>
                   </div>
                 )}
               </div>
