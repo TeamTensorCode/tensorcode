@@ -119,11 +119,11 @@ function HomePage() {
 
         {/* Table */}
         <section className="overflow-hidden rounded-xl border border-border bg-card">
-          <div className="grid grid-cols-[3rem_1fr_8rem_7rem] border-b border-border bg-secondary/60 px-4 py-2.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+          <div className="grid grid-cols-[2rem_1fr_5rem] gap-3 border-b border-border bg-secondary/60 px-3 py-2.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground sm:grid-cols-[3rem_1fr_10rem_7rem] sm:gap-0 sm:px-4">
             <div>#</div>
             <div>Title</div>
-            <div>Topic</div>
-            <div>Difficulty</div>
+            <div className="hidden sm:block">Topic</div>
+            <div className="text-right sm:text-left">Difficulty</div>
           </div>
           {filtered.length === 0 ? (
             <div className="px-4 py-14 text-center text-sm text-muted-foreground">
@@ -135,16 +135,25 @@ function HomePage() {
                 key={p.id}
                 to="/problems/$slug"
                 params={{ slug: p.slug }}
-                className="group grid grid-cols-[3rem_1fr_8rem_7rem] items-center border-b border-border px-4 py-3.5 text-sm transition-colors last:border-b-0 hover:bg-[var(--surface-hover)]"
+                className="group grid grid-cols-[2rem_1fr_5rem] items-center gap-3 border-b border-border px-3 py-3 text-sm transition-colors last:border-b-0 hover:bg-[var(--surface-hover)] sm:grid-cols-[3rem_1fr_10rem_7rem] sm:gap-0 sm:px-4 sm:py-3.5"
               >
                 <div className="font-mono text-xs text-muted-foreground">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <div className="font-medium text-foreground group-hover:text-primary">
-                  {p.title}
+                <div className="min-w-0">
+                  <div className="truncate font-medium text-foreground group-hover:text-primary">
+                    {p.title}
+                  </div>
+                  <div className="mt-0.5 truncate text-xs text-muted-foreground sm:hidden">
+                    {p.topic ?? "—"}
+                  </div>
                 </div>
-                <div className="text-xs text-muted-foreground">{p.topic ?? "—"}</div>
-                <DifficultyBadge value={p.difficulty} />
+                <div className="hidden truncate text-xs text-muted-foreground sm:block">
+                  {p.topic ?? "—"}
+                </div>
+                <div className="flex justify-end sm:justify-start">
+                  <DifficultyBadge value={p.difficulty} />
+                </div>
               </Link>
             ))
           )}
