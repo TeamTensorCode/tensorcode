@@ -1,20 +1,17 @@
 import { Link } from "@tanstack/react-router";
+import logoAsset from "@/assets/tensorcode-logo.png.asset.json";
 
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
-          <span
-            className="grid h-7 w-7 place-items-center rounded-md font-mono text-sm text-primary-foreground"
-            style={{ background: "var(--gradient-brand)" }}
-            aria-hidden
-          >
-            T
-          </span>
-          <span className="text-[15px]">
-            Tensor<span className="brand-gradient-text">Code</span>
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="TensorCode"
+            className="h-8 w-auto"
+            loading="eager"
+          />
         </Link>
         <nav className="flex items-center gap-1 text-sm">
           <Link
