@@ -3,7 +3,7 @@ import logoAsset from "@/assets/tensorcode-logo.png.asset.json";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-border bg-red-500/70 backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
           <img
