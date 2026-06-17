@@ -1,0 +1,510 @@
+{
+    "trainset": [
+        {
+            "Unnamed: 0": 15,
+            "Hours_Charged": 0.5626641863178239,
+            "Battery_Gained": 6.687992558953472
+        },
+        {
+            "Unnamed: 0": 31,
+            "Hours_Charged": 2.6851348463900315,
+            "Battery_Gained": 13.055404539170096
+        },
+        {
+            "Unnamed: 0": 92,
+            "Hours_Charged": 0.2368056005536967,
+            "Battery_Gained": 5.71041680166109
+        },
+        {
+            "Unnamed: 0": 81,
+            "Hours_Charged": 7.785380158072005,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 63,
+            "Hours_Charged": 2.198702500843389,
+            "Battery_Gained": 11.596107502530169
+        },
+        {
+            "Unnamed: 0": 10,
+            "Hours_Charged": 3.884135220531328,
+            "Battery_Gained": 16.652405661593985
+        },
+        {
+            "Unnamed: 0": 6,
+            "Hours_Charged": 6.093178306604633,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 93,
+            "Hours_Charged": 8.60193029987997,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 76,
+            "Hours_Charged": 9.596603925089632,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 41,
+            "Hours_Charged": 2.540026475845061,
+            "Battery_Gained": 12.620079427535185
+        },
+        {
+            "Unnamed: 0": 69,
+            "Hours_Charged": 7.026773833967448,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 25,
+            "Hours_Charged": 8.634132396872168,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 45,
+            "Hours_Charged": 5.433930092046789,
+            "Battery_Gained": 21.30179027614037
+        },
+        {
+            "Unnamed: 0": 29,
+            "Hours_Charged": 4.848699022882917,
+            "Battery_Gained": 19.54609706864875
+        },
+        {
+            "Unnamed: 0": 84,
+            "Hours_Charged": 6.14879465498741,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 89,
+            "Hours_Charged": 1.6342699483840697,
+            "Battery_Gained": 9.902809845152207
+        },
+        {
+            "Unnamed: 0": 82,
+            "Hours_Charged": 9.185988248563405,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 80,
+            "Hours_Charged": 6.9798681189211065,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 48,
+            "Hours_Charged": 1.6045355412819309,
+            "Battery_Gained": 9.813606623845793
+        },
+        {
+            "Unnamed: 0": 86,
+            "Hours_Charged": 1.078133585623028,
+            "Battery_Gained": 8.234400756869084
+        },
+        {
+            "Unnamed: 0": 58,
+            "Hours_Charged": 8.153828018868984,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 7,
+            "Hours_Charged": 2.454926757047602,
+            "Battery_Gained": 12.364780271142806
+        },
+        {
+            "Unnamed: 0": 55,
+            "Hours_Charged": 7.589886981484543,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 83,
+            "Hours_Charged": 8.395837798118057,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 39,
+            "Hours_Charged": 8.221888145643844,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 90,
+            "Hours_Charged": 8.779598958596274,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 56,
+            "Hours_Charged": 7.675909893998743,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 17,
+            "Hours_Charged": 7.625937127371269,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 97,
+            "Hours_Charged": 7.914067811129435,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 38,
+            "Hours_Charged": 3.1013481608183,
+            "Battery_Gained": 14.3040444824549
+        },
+        {
+            "Unnamed: 0": 61,
+            "Hours_Charged": 7.399782092145389,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 66,
+            "Hours_Charged": 0.1272878128331955,
+            "Battery_Gained": 5.381863438499587
+        },
+        {
+            "Unnamed: 0": 21,
+            "Hours_Charged": 4.742916957945004,
+            "Battery_Gained": 19.22875087383501
+        },
+        {
+            "Unnamed: 0": 12,
+            "Hours_Charged": 2.4917467672023665,
+            "Battery_Gained": 12.4752403016071
+        },
+        {
+            "Unnamed: 0": 1,
+            "Hours_Charged": 6.448725773465166,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 46,
+            "Hours_Charged": 9.106942762199743,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 72,
+            "Hours_Charged": 2.695841771054877,
+            "Battery_Gained": 13.087525313164631
+        },
+        {
+            "Unnamed: 0": 78,
+            "Hours_Charged": 2.2091952248336355,
+            "Battery_Gained": 11.627585674500908
+        },
+        {
+            "Unnamed: 0": 75,
+            "Hours_Charged": 7.276157585332173,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 8,
+            "Hours_Charged": 5.774890512862337,
+            "Battery_Gained": 22.32467153858701
+        },
+        {
+            "Unnamed: 0": 59,
+            "Hours_Charged": 1.633454653652484,
+            "Battery_Gained": 9.900363960957453
+        },
+        {
+            "Unnamed: 0": 67,
+            "Hours_Charged": 2.7716041266463165,
+            "Battery_Gained": 13.31481237993895
+        },
+        {
+            "Unnamed: 0": 91,
+            "Hours_Charged": 8.090625572579093,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 99,
+            "Hours_Charged": 8.655400974220345,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 18,
+            "Hours_Charged": 2.7924707249326888,
+            "Battery_Gained": 13.377412174798067
+        },
+        {
+            "Unnamed: 0": 22,
+            "Hours_Charged": 2.554991800635376,
+            "Battery_Gained": 12.664975401906126
+        },
+        {
+            "Unnamed: 0": 87,
+            "Hours_Charged": 6.833404136084599,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 2,
+            "Hours_Charged": 0.3186397322895984,
+            "Battery_Gained": 5.955919196868795
+        },
+        {
+            "Unnamed: 0": 60,
+            "Hours_Charged": 8.27570079255024,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 98,
+            "Hours_Charged": 3.637501742396859,
+            "Battery_Gained": 15.912505227190575
+        },
+        {
+            "Unnamed: 0": 26,
+            "Hours_Charged": 3.782909123955447,
+            "Battery_Gained": 16.34872737186634
+        },
+        {
+            "Unnamed: 0": 74,
+            "Hours_Charged": 6.85261553232161,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 85,
+            "Hours_Charged": 4.723088570083654,
+            "Battery_Gained": 19.16926571025096
+        },
+        {
+            "Unnamed: 0": 3,
+            "Hours_Charged": 7.405382006609269,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 34,
+            "Hours_Charged": 5.069891718714535,
+            "Battery_Gained": 20.209675156143604
+        },
+        {
+            "Unnamed: 0": 27,
+            "Hours_Charged": 8.561770959006136,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 64,
+            "Hours_Charged": 3.2736686735101115,
+            "Battery_Gained": 14.821006020530334
+        },
+        {
+            "Unnamed: 0": 20,
+            "Hours_Charged": 1.7358295905255916,
+            "Battery_Gained": 10.207488771576774
+        },
+        {
+            "Unnamed: 0": 94,
+            "Hours_Charged": 7.543810074316038,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 5,
+            "Hours_Charged": 7.382447704251922,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 42,
+            "Hours_Charged": 1.1372799892664387,
+            "Battery_Gained": 8.411839967799317
+        },
+        {
+            "Unnamed: 0": 0,
+            "Hours_Charged": 2.6608967073279546,
+            "Battery_Gained": 12.982690121983865
+        },
+        {
+            "Unnamed: 0": 51,
+            "Hours_Charged": 6.578013363798581,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 71,
+            "Hours_Charged": 4.2399439489866255,
+            "Battery_Gained": 17.719831846959877
+        },
+        {
+            "Unnamed: 0": 19,
+            "Hours_Charged": 7.570022455860842,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 35,
+            "Hours_Charged": 2.3390861551649245,
+            "Battery_Gained": 12.017258465494772
+        },
+        {
+            "Unnamed: 0": 16,
+            "Hours_Charged": 2.8510549404696928,
+            "Battery_Gained": 13.553164821409078
+        },
+        {
+            "Unnamed: 0": 28,
+            "Hours_Charged": 4.147560199913202,
+            "Battery_Gained": 17.442680599739607
+        },
+        {
+            "Unnamed: 0": 53,
+            "Hours_Charged": 9.438567388891656,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 54,
+            "Hours_Charged": 8.732780867091565,
+            "Battery_Gained": 23.0
+        }
+    ],
+    "testset": [
+        {
+            "Unnamed: 0": 95,
+            "Hours_Charged": 7.138588312582357,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 77,
+            "Hours_Charged": 8.149715965155687,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 49,
+            "Hours_Charged": 7.338796338545314,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 79,
+            "Hours_Charged": 6.85708264195441,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 57,
+            "Hours_Charged": 0.8830964362883309,
+            "Battery_Gained": 7.649289308864993
+        },
+        {
+            "Unnamed: 0": 65,
+            "Hours_Charged": 7.832679115001984,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 68,
+            "Hours_Charged": 6.677681080838455,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 96,
+            "Hours_Charged": 2.002660720334349,
+            "Battery_Gained": 11.007982161003047
+        },
+        {
+            "Unnamed: 0": 73,
+            "Hours_Charged": 3.792317775796543,
+            "Battery_Gained": 16.37695332738963
+        },
+        {
+            "Unnamed: 0": 23,
+            "Hours_Charged": 0.3969831937858648,
+            "Battery_Gained": 6.190949581357595
+        },
+        {
+            "Unnamed: 0": 13,
+            "Hours_Charged": 4.802667233891871,
+            "Battery_Gained": 19.40800170167561
+        },
+        {
+            "Unnamed: 0": 44,
+            "Hours_Charged": 7.728125797621731,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 14,
+            "Hours_Charged": 0.9247267264430814,
+            "Battery_Gained": 7.774180179329244
+        },
+        {
+            "Unnamed: 0": 37,
+            "Hours_Charged": 2.502781237283048,
+            "Battery_Gained": 12.508343711849143
+        },
+        {
+            "Unnamed: 0": 47,
+            "Hours_Charged": 1.4368177401899684,
+            "Battery_Gained": 9.310453220569904
+        },
+        {
+            "Unnamed: 0": 70,
+            "Hours_Charged": 9.954003190545697,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 36,
+            "Hours_Charged": 5.523601991179713,
+            "Battery_Gained": 21.570805973539137
+        },
+        {
+            "Unnamed: 0": 4,
+            "Hours_Charged": 9.835833311280227,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 11,
+            "Hours_Charged": 8.90491557856966,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 50,
+            "Hours_Charged": 4.904001866692135,
+            "Battery_Gained": 19.71200560007641
+        },
+        {
+            "Unnamed: 0": 88,
+            "Hours_Charged": 6.214912552894965,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 32,
+            "Hours_Charged": 8.094557896434168,
+            "Battery_Gained": 23.0
+        },
+        {
+            "Unnamed: 0": 62,
+            "Hours_Charged": 1.9876919986537225,
+            "Battery_Gained": 10.963075995961166
+        },
+        {
+            "Unnamed: 0": 33,
+            "Hours_Charged": 0.9237762277801764,
+            "Battery_Gained": 7.7713286833405295
+        },
+        {
+            "Unnamed: 0": 52,
+            "Hours_Charged": 1.6591795780930474,
+            "Battery_Gained": 9.977538734279143
+        },
+        {
+            "Unnamed: 0": 43,
+            "Hours_Charged": 5.160343561435203,
+            "Battery_Gained": 20.48103068430561
+        },
+        {
+            "Unnamed: 0": 30,
+            "Hours_Charged": 0.7968332052291938,
+            "Battery_Gained": 7.390499615687581
+        },
+        {
+            "Unnamed: 0": 40,
+            "Hours_Charged": 3.913713367277497,
+            "Battery_Gained": 16.741140101832492
+        },
+        {
+            "Unnamed: 0": 24,
+            "Hours_Charged": 0.0502965600604543,
+            "Battery_Gained": 5.150889680181363
+        },
+        {
+            "Unnamed: 0": 9,
+            "Hours_Charged": 2.2915811637889725,
+            "Battery_Gained": 11.874743491366916
+        }
+    ],
+    "solution": "\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nfrom sklearn.linear_model import LinearRegression\n\n# -----------------------\n# Load data\n# -----------------------\npath = ''\ndata = pd.read_csv(path)\n\n# -----------------------\n# Visualization\n# -----------------------\nsns.scatterplot(data=data, x='Hours_Charged', y='Battery_Gained')\nplt.title(\"Hours Charged vs Battery Gained\")\nplt.show()\n\n# -----------------------\n# Find saturation point\n# -----------------------\nmaximum_battery = data['Battery_Gained'].max()\n\nmax_charge = data[\n    data['Battery_Gained'] == maximum_battery\n    ]['Hours_Charged'].min()\n\n# -----------------------\n# Remove saturation region \n# -----------------------\ndata = data[data['Hours_Charged'] <= max_charge]\n\n# -----------------------\n# Linear Regression\n# -----------------------\nX = data[['Hours_Charged']]\ny = data['Battery_Gained']\n\n\nmodel = LinearRegression()\nmodel.fit(X, y)\n",
+    "explanation": "## Solution Approach\n\n### 1. Data Loading and Visualization\nThe dataset is first loaded using `pandas`. To understand the relationship between charging time and battery gain, a scatter plot is used. This helps visualize whether the relationship is linear or contains anomalies such as saturation.\n\n### 2. Identifying Saturation Point\nIn real battery systems, once the battery reaches full capacity, it stops increasing even if charging continues. This creates a **saturation region** in the data.\n\nTo handle this, we find:\n- The maximum observed battery gain\n- The minimum charging time at which this maximum value occurs\n\nThis helps identify the point after which additional charging hours no longer increase battery gain.\n\n### 3. Data Cleaning\nAll data points beyond the saturation point are removed:\n\n- Only samples where `Hours_Charged <= max_charge` are retained\n\nThis ensures the remaining dataset follows a more consistent linear relationship.\n\n### 4. Model Training\nA simple **Linear Regression** model is trained using:\n\n- Feature: `Hours_Charged`\n- Target: `Battery_Gained`\n\nThe model learns the relationship between charging duration and battery gain based on the cleaned data.\n\n### 5. Outcome\nAfter training, the model can predict the expected battery gain for any given number of charging hours, ",
+    "problem_name": "laptop_battery",
+    "difficulty": "easy"
+}

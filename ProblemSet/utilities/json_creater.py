@@ -31,10 +31,10 @@ def build_json(problem_path, difficulty_level):
     # file paths
     files = {
         "statement": "statement.txt",
-        "trainset": "trainset.csv",
-        "testset": "testset.csv",
+        "trainset": "Training_Set.csv",
+        "testset": "Test_Set.csv",
         "solution": "solution.py",
-        "explanation": "explanation.md"
+        "explanation": "explaination.md"
     }
 
     # read files if exist

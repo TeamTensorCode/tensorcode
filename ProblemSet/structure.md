@@ -7,7 +7,6 @@ the structure is like this
         testset.csv
         solution.py
         explaination.md
-        
-        .json(everything into json)
+        problem.json(everything into json)
 there is a utility dir that have scripts for different data related purpose
     
