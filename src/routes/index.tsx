@@ -74,7 +74,7 @@ function HomePage() {
               Free for a limited time
             </span>
             <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
-              LeetCode for <span className="brand-gradient-text">AI engineers.</span>
+              Coding practice for <span className="brand-gradient-text">AI engineers.</span>
             </h1>
             <p className="max-w-2xl text-base text-muted-foreground">
               Hand-picked machine learning coding problems with video walkthroughs and clean
