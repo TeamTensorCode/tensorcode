@@ -8,10 +8,13 @@ export function SiteHeader() {
         <Link to="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
           <img
             src={logoAsset.url}
-            alt="TensorCode"
+            alt=""
             className="h-8 w-auto"
             loading="eager"
           />
+          <span className="text-[15px]">
+            Tensor<span className="brand-gradient-text">Code</span>
+          </span>
         </Link>
         <nav className="flex items-center gap-1 text-sm">
           <Link
