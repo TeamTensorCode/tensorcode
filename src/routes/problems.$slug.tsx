@@ -1,5 +1,5 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import { getProblemBySlug } from "@/lib/problems.functions";
 import { SiteHeader, DifficultyBadge } from "@/components/SiteHeader";
@@ -8,31 +8,12 @@ import { Markdown } from "@/components/Markdown";
 import { PROBLEM_TESTS } from "@/lib/problem-tests";
 import { runUserCode, type RunOutcome } from "@/lib/pyodide-runner";
 
-const problemQuery = (slug: string) =>
-  queryOptions({
-    queryKey: ["problem", slug],
-    queryFn: () => getProblemBySlug({ data: { slug } }),
-  });
+// â”€â”€â”€ Route â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const Route = createFileRoute("/problems/$slug")({
-  loader: async ({ params, context }) => {
-    const data = await context.queryClient.ensureQueryData(problemQuery(params.slug));
-    if (!data) throw notFound();
-    return data;
-  },
-  head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.title} — TensorCode` },
-          { name: "description", content: `${loaderData.difficulty} • ${loaderData.topic ?? "AI/ML"} problem on TensorCode.` },
-          { property: "og:title", content: `${loaderData.title} — TensorCode` },
-          { property: "og:description", content: `${loaderData.difficulty} • ${loaderData.topic ?? "AI/ML"} problem on TensorCode.` },
-        ]
-      : [{ title: "Problem — TensorCode" }],
-  }),
   component: ProblemPage,
   errorComponent: ({ error }) => (
-    <div className="p-8 text-sm text-destructive">{error.message}</div>
+    <div className="p-8 text-sm text-destructive">{(error as Error).message}</div>
   ),
   notFoundComponent: () => (
     <div className="min-h-screen">
@@ -47,8 +28,9 @@ export const Route = createFileRoute("/problems/$slug")({
   ),
 });
 
-type Resource = { type?: string; title: string; url: string };
+// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
+/** Extract a YouTube embed URL from any YouTube link format. */
 function ytEmbed(url: string): string | null {
   try {
     const u = new URL(url);
@@ -66,10 +48,33 @@ function ytEmbed(url: string): string | null {
   }
 }
 
+type Resource = { type?: string; title: string; url: string };
+
+// â”€â”€â”€ Test-result sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+function Row({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-muted-foreground">{label}</div>
+      <pre className="overflow-x-auto whitespace-pre-wrap break-words text-foreground">
+        {value}
+      </pre>
+    </div>
+  );
+}
+
+// â”€â”€â”€ Main component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
 function ProblemPage() {
   const { slug } = Route.useParams();
-  const { data } = useSuspenseQuery(problemQuery(slug));
-  const [code, setCode] = useState(data?.starter_code ?? "");
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["problem", slug],
+    queryFn: () => getProblemBySlug(slug),
+  });
+
+  // Editor state
+  const [code, setCode] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [running, setRunning] = useState(false);
   const [status, setStatus] = useState("");
@@ -77,28 +82,83 @@ function ProblemPage() {
   const [activeTab, setActiveTab] = useState<"results" | "console">("results");
   const [submitted, setSubmitted] = useState(false);
 
-  const tests = useMemo(() => (data ? PROBLEM_TESTS[data.slug] : undefined), [data]);
+  // Once data arrives, seed the editor with starter_code (only once)
+  const editorCode = code ?? data?.starter_code ?? "";
 
-  if (!data) return null;
+  const tests = useMemo(
+    () => (data ? PROBLEM_TESTS[data.slug] : undefined),
+    [data],
+  );
+
+  // â”€â”€ Loading / error states â”€â”€
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <SiteHeader />
+        <main className="mx-auto max-w-6xl px-4 py-8">
+          <div className="mb-4 h-3 w-24 animate-pulse rounded bg-secondary" />
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="h-96 animate-pulse rounded-lg bg-card" />
+            <div className="h-96 animate-pulse rounded-lg bg-card" />
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen">
+        <SiteHeader />
+        <div className="p-8 text-sm text-destructive">{(error as Error).message}</div>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="min-h-screen">
+        <SiteHeader />
+        <div className="mx-auto max-w-3xl px-4 py-16 text-center">
+          <h1 className="text-xl font-semibold">Problem not found</h1>
+          <Link to="/" className="mt-4 inline-block text-primary underline">
+            Back to problems
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   const resources = (data.resources as Resource[]) ?? [];
 
+  // â”€â”€ Run / Submit â”€â”€
   async function execute(mode: "run" | "submit") {
     if (!tests) {
-      setOutcome({ stdout: "", stderr: "", results: [], compileError: "No tests defined for this problem yet." });
+      setOutcome({
+        stdout: "",
+        stderr: "",
+        results: [],
+        compileError: "No tests defined for this problem yet.",
+      });
       setActiveTab("results");
       return;
     }
     setRunning(true);
-    setStatus("Starting…");
+    setStatus("Startingâ€¦");
     setActiveTab("results");
     setSubmitted(mode === "submit");
     try {
       const cases = mode === "run" ? tests.cases.slice(0, 1) : tests.cases;
-      const res = await runUserCode(code, cases, setStatus);
+      const res = await runUserCode(editorCode, cases, setStatus);
       setOutcome(res);
       setStatus("");
     } catch (e) {
-      setOutcome({ stdout: "", stderr: "", results: [], compileError: (e as Error).message });
+      setOutcome({
+        stdout: "",
+        stderr: "",
+        results: [],
+        compileError: (e as Error).message,
+      });
       setStatus("");
     } finally {
       setRunning(false);
@@ -113,14 +173,16 @@ function ProblemPage() {
     <div className="min-h-screen overflow-x-hidden">
       <SiteHeader />
       <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:py-8">
+        {/* Breadcrumb */}
         <div className="mb-4 text-xs">
-          <Link to="/" className="text-muted-foreground hover:text-foreground">
-            ← All problems
+          <Link to="/" className="text-muted-foreground transition-colors hover:text-foreground">
+            â† All problems
           </Link>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {/* Left: prompt */}
+
+          {/* â”€â”€ Left: Problem description â”€â”€ */}
           <section className="min-w-0 rounded-lg border border-border bg-card p-5 sm:p-6">
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2">
               <h1 className="min-w-0 break-words text-lg font-semibold tracking-tight sm:text-xl">
@@ -135,6 +197,7 @@ function ProblemPage() {
               <Markdown>{data.description}</Markdown>
             </div>
 
+            {/* Resources / videos */}
             {resources.length > 0 && (
               <div className="mt-8">
                 <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
@@ -172,8 +235,10 @@ function ProblemPage() {
             )}
           </section>
 
-          {/* Right: editor */}
+          {/* â”€â”€ Right: Code editor + results â”€â”€ */}
           <section className="flex min-w-0 flex-col gap-4">
+
+            {/* Code editor */}
             <div className="overflow-hidden rounded-lg border border-border bg-card">
               <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2 text-xs">
                 <span className="font-mono text-muted-foreground">
@@ -182,27 +247,39 @@ function ProblemPage() {
                 <span className="text-muted-foreground">Write your attempt</span>
               </div>
               <textarea
+                id="code-editor"
                 spellCheck={false}
-                value={code}
+                value={editorCode}
                 onChange={(e) => setCode(e.target.value)}
                 className="block min-h-[320px] w-full resize-y bg-[var(--code-bg)] p-4 font-mono text-sm outline-none"
               />
             </div>
 
+            {/* Action buttons */}
             <div className="flex flex-wrap items-center gap-2">
-              <Button onClick={() => execute("run")} disabled={running}>
-                {running ? "Running…" : "Run Code"}
+              <Button id="btn-run" onClick={() => execute("run")} disabled={running}>
+                {running ? "Runningâ€¦" : "Run Code"}
               </Button>
-              <Button variant="secondary" onClick={() => execute("submit")} disabled={running}>
+              <Button
+                id="btn-submit"
+                variant="secondary"
+                onClick={() => execute("submit")}
+                disabled={running}
+              >
                 Submit
               </Button>
               <Button
+                id="btn-reveal"
                 variant={revealed ? "outline" : "ghost"}
                 onClick={() => setRevealed((v) => !v)}
               >
                 {revealed ? "Hide solution" : "Reveal solution"}
               </Button>
-              <Button variant="ghost" onClick={() => setCode(data.starter_code ?? "")}>
+              <Button
+                id="btn-reset"
+                variant="ghost"
+                onClick={() => setCode(data.starter_code ?? "")}
+              >
                 Reset
               </Button>
               {status && (
@@ -215,14 +292,24 @@ function ProblemPage() {
               <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-2 py-1.5 text-xs">
                 <div className="flex items-center gap-1">
                   <button
+                    id="tab-results"
                     onClick={() => setActiveTab("results")}
-                    className={`rounded px-2 py-1 ${activeTab === "results" ? "bg-background text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                    className={`rounded px-2 py-1 transition-colors ${
+                      activeTab === "results"
+                        ? "bg-background text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
                     Test Results
                   </button>
                   <button
+                    id="tab-console"
                     onClick={() => setActiveTab("console")}
-                    className={`rounded px-2 py-1 ${activeTab === "console" ? "bg-background text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                    className={`rounded px-2 py-1 transition-colors ${
+                      activeTab === "console"
+                        ? "bg-background text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
                     Console
                   </button>
@@ -257,14 +344,18 @@ function ProblemPage() {
                     <>
                       {submitted && allPassed && (
                         <div className="mb-3 rounded border border-easy/40 bg-easy/10 px-3 py-2 text-sm font-medium text-easy">
-                          ✓ Accepted — all {total} test cases passed.
+                          âœ“ Accepted â€” all {total} test cases passed.
                         </div>
                       )}
                       <ul className="space-y-2">
                         {outcome.results.map((r, i) => (
                           <li
                             key={i}
-                            className={`rounded border p-3 ${r.ok ? "border-easy/30 bg-easy/5" : "border-hard/30 bg-hard/5"}`}
+                            className={`rounded border p-3 ${
+                              r.ok
+                                ? "border-easy/30 bg-easy/5"
+                                : "border-hard/30 bg-hard/5"
+                            }`}
                           >
                             <div className="mb-1 flex items-center justify-between gap-2">
                               <span className="text-xs font-medium">
@@ -273,7 +364,7 @@ function ProblemPage() {
                               <span
                                 className={`font-mono text-xs ${r.ok ? "text-easy" : "text-hard"}`}
                               >
-                                {r.ok ? "✓ Passed" : "✗ Failed"}
+                                {r.ok ? "âœ“ Passed" : "âœ— Failed"}
                               </span>
                             </div>
                             {!r.ok && (
@@ -308,6 +399,7 @@ function ProblemPage() {
               )}
             </div>
 
+            {/* Solution reveal */}
             {revealed && (
               <div className="overflow-hidden rounded-lg border border-border bg-card">
                 <div className="border-b border-border bg-secondary/60 px-4 py-2 text-xs font-mono text-muted-foreground">
@@ -326,17 +418,6 @@ function ProblemPage() {
           </section>
         </div>
       </main>
-    </div>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <div className="text-muted-foreground">{label}</div>
-      <pre className="overflow-x-auto whitespace-pre-wrap break-words text-foreground">
-        {value}
-      </pre>
     </div>
   );
 }

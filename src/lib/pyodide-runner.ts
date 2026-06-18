@@ -1,4 +1,4 @@
-// Pyodide loader + test runner. Loads Pyodide from the CDN on first use,
+﻿// Pyodide loader + test runner. Loads Pyodide from the CDN on first use,
 // installs numpy, then executes user code against a list of test cases.
 
 import type { TestCase } from "./problem-tests";
@@ -47,10 +47,10 @@ export async function getPyodide(onStatus?: (s: string) => void): Promise<Pyodid
   if (typeof window === "undefined") throw new Error("Pyodide only runs in the browser");
   if (window.__pyodidePromise) return window.__pyodidePromise;
   window.__pyodidePromise = (async () => {
-    onStatus?.("Loading Python runtime…");
+    onStatus?.("Loading Python runtimeâ€¦");
     await loadScript(`${PYODIDE_BASE}pyodide.js`);
     const pyodide = await window.loadPyodide!({ indexURL: PYODIDE_BASE });
-    onStatus?.("Loading numpy…");
+    onStatus?.("Loading numpyâ€¦");
     await pyodide.loadPackage("numpy");
     onStatus?.("Ready");
     return pyodide;

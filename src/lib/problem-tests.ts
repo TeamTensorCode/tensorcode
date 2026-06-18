@@ -1,4 +1,4 @@
-// Per-problem test cases. Each `call` is a Python expression that invokes
+﻿// Per-problem test cases. Each `call` is a Python expression that invokes
 // the user-defined function. Either `expected` (a Python expression compared
 // to the result with np.allclose) or `check` (a boolean Python expression
 // referencing `result`) must be provided.

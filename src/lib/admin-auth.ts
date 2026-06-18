@@ -1,4 +1,4 @@
-const KEY = "tensorcode_admin_pw";
+﻿const KEY = "tensorcode_admin_pw";
 
 export function getAdminPassword(): string | null {
   if (typeof window === "undefined") return null;

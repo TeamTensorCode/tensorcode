@@ -1,12 +1,10 @@
-@import "tailwindcss" source(none);
+﻿@import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /*
- * TensorCode — dark, utilitarian, LeetCode-inspired.
- * Crisp typography, monospace accents, warm orange brand.
+ * TensorCode â€” dark, utilitarian, LeetCode-inspired.
+ * Crisp typography, monospace accents, blue-purple brand to match logo.
  */
 
 @theme inline {
@@ -15,90 +13,112 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-destructive:         var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
 
-  --color-easy: var(--easy);
-  --color-medium: var(--medium);
-  --color-hard: var(--hard);
-  --color-code-bg: var(--code-bg);
-  --color-surface: var(--surface);
+  --color-easy:          var(--easy);
+  --color-medium:        var(--medium);
+  --color-hard:          var(--hard);
+  --color-code-bg:       var(--code-bg);
+  --color-surface:       var(--surface);
   --color-surface-hover: var(--surface-hover);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 :root {
   --radius: 0.625rem;
 
-  /* Deep ink background with subtle warmth */
-  --background: oklch(0.16 0.012 260);
-  --foreground: oklch(0.96 0.005 250);
+  /* Deep ink background */
+  --background:      oklch(0.13 0.014 265);
+  --foreground:      oklch(0.96 0.005 250);
 
-  --card: oklch(0.205 0.013 260);
+  --card:            oklch(0.18 0.014 265);
   --card-foreground: oklch(0.96 0.005 250);
-  --popover: oklch(0.22 0.014 260);
+  --popover:         oklch(0.20 0.014 265);
   --popover-foreground: oklch(0.96 0.005 250);
 
-  /* Brand: warm LeetCode-ish orange */
-  --primary: oklch(0.78 0.165 60);
-  --primary-foreground: oklch(0.18 0.02 60);
+  /* Brand: blue-purple matching the logo */
+  --primary:             oklch(0.65 0.22 265);
+  --primary-foreground:  oklch(0.98 0.005 265);
 
-  --secondary: oklch(0.255 0.012 260);
-  --secondary-foreground: oklch(0.94 0.005 250);
+  --secondary:           oklch(0.22 0.014 265);
+  --secondary-foreground:oklch(0.94 0.005 250);
 
-  --muted: oklch(0.245 0.012 260);
-  --muted-foreground: oklch(0.68 0.012 260);
+  --muted:               oklch(0.21 0.012 265);
+  --muted-foreground:    oklch(0.62 0.012 265);
 
-  --accent: oklch(0.27 0.025 60);
-  --accent-foreground: oklch(0.95 0.02 60);
+  --accent:              oklch(0.26 0.03 265);
+  --accent-foreground:   oklch(0.95 0.02 265);
 
-  --destructive: oklch(0.65 0.21 25);
+  --destructive:         oklch(0.65 0.21 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.28 0.012 260);
-  --input: oklch(0.28 0.012 260);
-  --ring: oklch(0.78 0.165 60);
+  --border: oklch(0.26 0.013 265);
+  --input:  oklch(0.26 0.013 265);
+  --ring:   oklch(0.65 0.22 265);
 
-  --easy: oklch(0.78 0.16 165);
-  --medium: oklch(0.82 0.15 80);
-  --hard: oklch(0.72 0.2 22);
+  /* Difficulty colours */
+  --easy:   oklch(0.78 0.16 165);   /* green  */
+  --medium: oklch(0.82 0.15 80);    /* amber  */
+  --hard:   oklch(0.72 0.2  22);    /* red    */
 
-  --code-bg: oklch(0.18 0.012 260);
-  --surface: oklch(0.205 0.013 260);
-  --surface-hover: oklch(0.235 0.013 260);
+  /* Code editor surface */
+  --code-bg:       oklch(0.15 0.012 265);
+  --surface:       oklch(0.18 0.014 265);
+  --surface-hover: oklch(0.21 0.014 265);
 
+  /* Hero radial glow â€” blue-purple from logo */
   --gradient-hero: radial-gradient(
-      ellipse 80% 60% at 50% -10%,
-      color-mix(in oklab, var(--primary) 22%, transparent),
-      transparent 70%
-    );
-  --gradient-brand: linear-gradient(135deg, oklch(0.78 0.18 55), oklch(0.72 0.2 30));
-  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
-                 0 12px 40px -12px color-mix(in oklab, var(--primary) 35%, transparent);
+    ellipse 80% 55% at 50% -5%,
+    color-mix(in oklab, oklch(0.65 0.22 265) 25%, transparent),
+    transparent 70%
+  );
+
+  /* Brand text gradient â€” blue â†’ purple â†’ orange (logo palette) */
+  --gradient-brand: linear-gradient(
+    135deg,
+    oklch(0.62 0.26 265) 0%,
+    oklch(0.58 0.28 290) 40%,
+    oklch(0.75 0.22 50)  100%
+  );
+
+  --shadow-glow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 28%, transparent),
+    0 12px 40px -12px color-mix(in oklab, var(--primary) 30%, transparent);
 }
 
+/* â”€â”€â”€ Base â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
 @layer base {
-  * { border-color: var(--color-border); }
-  html, body { height: 100%; }
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -107,23 +127,36 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  code, pre, kbd { font-family: var(--font-mono); }
+
+  code,
+  pre,
+  kbd {
+    font-family: var(--font-mono);
+  }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-primary) 35%, transparent);
+    background: color-mix(in oklab, var(--color-primary) 30%, transparent);
     color: var(--color-foreground);
   }
 
   /* Subtle scrollbar */
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
   ::-webkit-scrollbar-thumb {
     background: color-mix(in oklab, var(--color-foreground) 12%, transparent);
     border-radius: 8px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: color-mix(in oklab, var(--color-foreground) 22%, transparent);
+    background: color-mix(in oklab, var(--color-foreground) 20%, transparent);
   }
 }
+
+/* â”€â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 @utility hero-glow {
   background-image: var(--gradient-hero);
