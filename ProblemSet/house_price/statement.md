@@ -1,0 +1,1 @@
+david wanna buy a house however he think that he may be scammed so he collected data of house prices with the area and  they cover and some hidden parameter that sint detailed so he cannpot do feature engerring in the tradictional sense  want you to make a model that 

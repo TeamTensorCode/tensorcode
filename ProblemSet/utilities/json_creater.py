@@ -47,6 +47,16 @@ def build_json(problem_path, difficulty_level):
             else:
                 data[key] = read_file(full_path)
 
+    # =========================
+    # NEW: merge metaData.json
+    # =========================
+    meta_path = os.path.join(problem_path, "metaData.json")
+
+    if os.path.exists(meta_path):
+        with open(meta_path, "r", encoding="utf-8") as f:
+            meta_data = json.load(f)
+            data.update(meta_data)   # inject all key-value pairs as-is
+
     # metadata
     data["problem_name"] = os.path.basename(problem_path)
     data["difficulty"] = difficulty_level
