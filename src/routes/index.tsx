@@ -122,7 +122,7 @@ function HomePage() {
           </div>
           <Input
             id="search-problems"
-            placeholder="&#x1F50D  Search problems or topics"
+            placeholder="🔍  Search problems or topics"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="sm:max-w-xs"
