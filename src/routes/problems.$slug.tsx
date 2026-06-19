@@ -46,7 +46,6 @@ function ytEmbed(url: string): string | null {
 
 type Resource = { type?: string; title: string; url: string };
 
-// â”€â”€â”€ Test-result sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
@@ -59,7 +58,7 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
-// â”€â”€â”€ Main component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
 
 function ProblemPage() {
   const { slug } = Route.useParams();
