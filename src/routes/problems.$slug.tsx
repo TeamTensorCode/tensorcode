@@ -244,7 +244,7 @@ function ProblemPage() {
               <textarea
                 id="code-editor"
                 spellCheck={false}
-                value={editorCode}
+                value={editorCode.replace(/\\n/g, "\n").replace(/\\t/g, "\t")}
                 onChange={(e) => setCode(e.target.value)}
                 className="block min-h-[320px] w-full resize-y bg-[var(--code-bg)] p-4 font-mono text-sm outline-none"
               />
