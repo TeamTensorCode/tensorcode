@@ -1,5 +1,1 @@
-Configure ```.env``` file like this:
-
-```
-
-```
+Configure the ```.env``` file before runnning the project.
