@@ -18,12 +18,12 @@ function AboutPage() {
             short video walkthrough.
           </p>
           <p>
-            Problems cover the math and code that actually appears in ML interviews â€”
+            Problems cover the math and code that actually appears in ML interviews
             from softmax and cross-entropy to attention mechanisms, layer norm, and
             positional encodings.
           </p>
           <p>
-            Everything is free right now â€” we're testing demand. If this is useful to
+            Everything is free right now while we're testing demand. If this is useful to
             you, tell a friend.
           </p>
           <p>
