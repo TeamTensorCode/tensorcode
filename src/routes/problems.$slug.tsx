@@ -176,7 +176,7 @@ function ProblemPage() {
         {/* Breadcrumb */}
         <div className="mb-4 text-xs">
           <Link to="/" className="text-muted-foreground transition-colors hover:text-foreground">
-            All problems
+           ← All problems
           </Link>
         </div>
 
