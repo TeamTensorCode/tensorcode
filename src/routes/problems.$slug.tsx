@@ -8,8 +8,6 @@ import { Markdown } from "@/components/Markdown";
 import { PROBLEM_TESTS } from "@/lib/problem-tests";
 import { runUserCode, type RunOutcome } from "@/lib/pyodide-runner";
 
-// â”€â”€â”€ Route â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
 export const Route = createFileRoute("/problems/$slug")({
   component: ProblemPage,
   errorComponent: ({ error }) => (
@@ -28,9 +26,7 @@ export const Route = createFileRoute("/problems/$slug")({
   ),
 });
 
-// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-/** Extract a YouTube embed URL from any YouTube link format. */
 function ytEmbed(url: string): string | null {
   try {
     const u = new URL(url);
