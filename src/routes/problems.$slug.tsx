@@ -138,7 +138,7 @@ function ProblemPage() {
       return;
     }
     setRunning(true);
-    setStatus("Startingâ€¦");
+    setStatus("Starting");
     setActiveTab("results");
     setSubmitted(mode === "submit");
     try {
