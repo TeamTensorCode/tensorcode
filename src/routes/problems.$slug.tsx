@@ -253,7 +253,7 @@ function ProblemPage() {
             {/* Action buttons */}
             <div className="flex flex-wrap items-center gap-2">
               <Button id="btn-run" onClick={() => execute("run")} disabled={running}>
-                {running ? "Runningâ€¦" : "Run Code"}
+                {running ? "Running" : "Run Code"}
               </Button>
               <Button
                 id="btn-submit"
