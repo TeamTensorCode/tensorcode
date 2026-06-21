@@ -85,7 +85,6 @@ function ProblemPage() {
     [data],
   );
 
-  // â”€â”€ Loading / error states â”€â”€
   if (isLoading) {
     return (
       <div className="min-h-screen">
@@ -339,7 +338,7 @@ function ProblemPage() {
                     <>
                       {submitted && allPassed && (
                         <div className="mb-3 rounded border border-easy/40 bg-easy/10 px-3 py-2 text-sm font-medium text-easy">
-                          âœ“ Accepted â€” all {total} test cases passed.
+                         Accepted all {total} test cases passed.
                         </div>
                       )}
                       <ul className="space-y-2">
