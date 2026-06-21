@@ -359,7 +359,7 @@ function ProblemPage() {
                               <span
                                 className={`font-mono text-xs ${r.ok ? "text-easy" : "text-hard"}`}
                               >
-                                {r.ok ? "âœ“ Passed" : "Failed"}
+                                {r.ok ? "Passed" : "Failed"}
                               </span>
                             </div>
                             {!r.ok && (
