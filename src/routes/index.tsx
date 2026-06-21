@@ -183,11 +183,11 @@ function HomePage() {
                   </div>
                   {/* Topic shown inline on mobile */}
                   <div className="mt-0.5 truncate text-xs text-muted-foreground sm:hidden">
-                    {p.topic ?? "â€”"}
+                    {p.topic ?? "”"}
                   </div>
                 </div>
                 <div className="hidden truncate text-xs text-muted-foreground sm:block">
-                  {p.topic ?? "â€”"}
+                  {p.topic ?? "”"}
                 </div>
                 <div className="flex justify-end sm:justify-start">
                   <DifficultyBadge value={p.difficulty} />

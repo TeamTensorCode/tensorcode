@@ -3,7 +3,7 @@
 @import "tw-animate-css";
 
 /*
- * TensorCode â€” dark, utilitarian, LeetCode-inspired.
+ * TensorCode ” dark, utilitarian, LeetCode-inspired.
  * Crisp typography, monospace accents, blue-purple brand to match logo.
  */
 
@@ -87,14 +87,14 @@
   --surface:       oklch(0.18 0.014 265);
   --surface-hover: oklch(0.21 0.014 265);
 
-  /* Hero radial glow â€” blue-purple from logo */
+  /* Hero radial glow ” blue-purple from logo */
   --gradient-hero: radial-gradient(
     ellipse 80% 55% at 50% -5%,
     color-mix(in oklab, oklch(0.65 0.22 265) 25%, transparent),
     transparent 70%
   );
 
-  /* Brand text gradient â€” blue â†’ purple â†’ orange (logo palette) */
+  /* Brand text gradient ” blue â†’ purple â†’ orange (logo palette) */
   --gradient-brand: linear-gradient(
     135deg,
     oklch(0.62 0.26 265) 0%,

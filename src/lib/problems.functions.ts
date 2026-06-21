@@ -1,4 +1,4 @@
-﻿// Data access functions â€” plain async functions using the browser Supabase client.
+﻿// Data access functions ” plain async functions using the browser Supabase client.
 // Previously these used createServerFn (TanStack Start SSR). Now they run entirely
 // in the browser against the public anon key.
 
