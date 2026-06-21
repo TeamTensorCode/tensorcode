@@ -47,7 +47,7 @@ export async function getPyodide(onStatus?: (s: string) => void): Promise<Pyodid
   if (typeof window === "undefined") throw new Error("Pyodide only runs in the browser");
   if (window.__pyodidePromise) return window.__pyodidePromise;
   window.__pyodidePromise = (async () => {
-    onStatus?.("Loading Python runtimeâ€¦");
+    onStatus?.("Loading Python runtime");
     await loadScript(`${PYODIDE_BASE}pyodide.js`);
     const pyodide = await window.loadPyodide!({ indexURL: PYODIDE_BASE });
     onStatus?.("Loading numpyâ€¦");
