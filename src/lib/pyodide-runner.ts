@@ -50,7 +50,7 @@ export async function getPyodide(onStatus?: (s: string) => void): Promise<Pyodid
     onStatus?.("Loading Python runtime");
     await loadScript(`${PYODIDE_BASE}pyodide.js`);
     const pyodide = await window.loadPyodide!({ indexURL: PYODIDE_BASE });
-    onStatus?.("Loading numpyâ€¦");
+    onStatus?.("Loading numpy");
     await pyodide.loadPackage("numpy");
     onStatus?.("Ready");
     return pyodide;
