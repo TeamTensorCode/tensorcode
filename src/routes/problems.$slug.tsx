@@ -188,7 +188,7 @@ function ProblemPage() {
               <div className="mb-4 text-xs text-muted-foreground">{data.topic}</div>
             )}
             <div className="min-w-0 overflow-x-auto">
-              <Markdown>{data.description}</Markdown>
+              <Markdown>{data.description.replace(/\\n/g, "\n").replace(/\\t/g, "\t")}</Markdown>
             </div>
 
             {/* Resources / videos */}
