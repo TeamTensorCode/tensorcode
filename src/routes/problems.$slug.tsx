@@ -229,7 +229,7 @@ function ProblemPage() {
             )}
           </section>
 
-          {/* â”€â”€ Right: Code editor + results â”€â”€ */}
+          {/* â”€â”€ Right: Solution Upload section + results â”€â”€ */}
           <section className="flex min-w-0 flex-col gap-4">
 
           <section className="h-fit rounded-lg border border-border bg-card p-4">
