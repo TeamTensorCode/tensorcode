@@ -69,7 +69,7 @@ function ProblemPage() {
   });
 
   // Editor state
-  const [code, setCode] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [running, setRunning] = useState(false);
   const [status, setStatus] = useState("");
@@ -78,7 +78,7 @@ function ProblemPage() {
   const [submitted, setSubmitted] = useState(false);
 
   // Once data arrives, seed the editor with starter_code (only once)
-  const editorCode = code ?? data?.starter_code ?? "";
+  const editorCode = "";
 
   const tests = useMemo(
     () => (data ? PROBLEM_TESTS[data.slug] : undefined),
@@ -288,6 +288,10 @@ function ProblemPage() {
                   type="file"
                   accept=".csv,text/csv"
                   className="hidden"
+                  onChange={(e) => {
+                    const selected = e.target.files?.[0];
+                    if (selected) setFile(selected);
+                  }}
                 />
               </label>
             </div>
@@ -316,7 +320,7 @@ function ProblemPage() {
               <Button
                 id="btn-reset"
                 variant="ghost"
-                onClick={() => setCode(data.starter_code ?? "")}
+                onClick={() => setFile(null)}
               >
                 Reset
               </Button>
