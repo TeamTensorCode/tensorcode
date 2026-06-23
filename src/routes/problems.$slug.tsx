@@ -177,7 +177,7 @@ function ProblemPage() {
         <div className="grid gap-6 lg:grid-cols-2">
 
           {/* â”€â”€ Left: Problem description â”€â”€ */}
-          <section className="min-w-0 rounded-lg border border-border bg-card p-5 sm:p-6">
+          <section className="h-fit self-start rounded-lg border border-border bg-card p-4">
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2">
               <h1 className="min-w-0 break-words text-lg font-semibold tracking-tight sm:text-xl">
                 {data.title}
