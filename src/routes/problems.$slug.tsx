@@ -232,22 +232,66 @@ function ProblemPage() {
           {/* â”€â”€ Right: Code editor + results â”€â”€ */}
           <section className="flex min-w-0 flex-col gap-4">
 
-            {/* Code editor */}
-            <div className="overflow-hidden rounded-lg border border-border bg-card">
-              <div className="flex items-center justify-between border-b border-border bg-secondary/60 px-4 py-2 text-xs">
-                <span className="font-mono text-muted-foreground">
-                  {data.language || "python"}
-                </span>
-                <span className="text-muted-foreground">Write your attempt</span>
+          <section className="h-fit rounded-lg border border-border bg-card p-4">
+            <div className="space-y-4">
+              <div>
+                <h2 className="text-lg font-semibold">Upload Problems</h2>
+                <p className="text-sm text-muted-foreground">
+                  Upload a CSV file containing problem data.
+                </p>
               </div>
-              <textarea
-                id="code-editor"
-                spellCheck={false}
-                value={editorCode.replace(/\\n/g, "\n").replace(/\\t/g, "\t")}
-                onChange={(e) => setCode(e.target.value)}
-                className="block min-h-[320px] w-full resize-y bg-[var(--code-bg)] p-4 font-mono text-sm outline-none"
-              />
+
+              <label
+                htmlFor="csv-upload"
+                className="
+                  flex
+                  cursor-pointer
+                  flex-col
+                  items-center
+                  justify-center
+                  rounded-lg
+                  border
+                  border-dashed
+                  border-border
+                  px-6
+                  py-8
+                  text-center
+                  transition-colors
+                  hover:border-primary
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mb-3 h-8 w-8 text-muted-foreground"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 16V4m0 0l-4 4m4-4l4 4M4 20h16"
+                  />
+                </svg>
+
+                <span className="font-medium">
+                  Click to upload CSV
+                </span>
+
+                <span className="mt-1 text-sm text-muted-foreground">
+                  Only .csv files are supported
+                </span>
+
+                <input
+                  id="csv-upload"
+                  type="file"
+                  accept=".csv,text/csv"
+                  className="hidden"
+                />
+              </label>
             </div>
+          </section>
 
             {/* Action buttons */}
             <div className="flex flex-wrap items-center gap-2">
