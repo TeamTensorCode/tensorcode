@@ -5,15 +5,6 @@ export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-/**
- * The admin panel relied on TanStack Start server functions to securely verify
- * a password and call the Supabase service-role API server-side. In a pure SPA
- * there is no server to run that logic, and exposing the service-role key
- * client-side would be a security risk.
- *
- * Use the Supabase dashboard directly to manage problems:
- * https://supabase.com/dashboard/project/whbtztxgqewdbtffdwbu/editor
- */
 function AdminPage() {
   return (
     <div className="min-h-screen">
