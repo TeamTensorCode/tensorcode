@@ -1,69 +1,61 @@
 ﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
+import { useState } from "react";
 
 export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
 function AdminPage() {
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+
+  const handleSendOtp = async () => {
+    // TODO: Supabase OTP
+
+    setOtpSent(true);
+  };
+
+  const handleVerify = async () => {
+    // TODO: Verify OTP
+  };
+
   return (
     <div className="min-h-screen">
       <SiteHeader />
-      <main className="mx-auto max-w-2xl px-4 py-20 text-center">
-        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-border bg-card">
-          <svg
-            className="h-8 w-8 text-muted-foreground"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
-            />
-          </svg>
-        </div>
+      <main className="mx-auto max-w-3xl px-6 py-24">
+        <div className="space-y-6">
+          <div>
+            <h1 className="text-5xl font-bold tracking-tight">
+              Admin{" "}
+              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+                Access
+              </span>
+            </h1>
 
-        <h1 className="text-2xl font-semibold tracking-tight">Admin Panel</h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          Problem management is done directly through the Supabase dashboard.
-          The admin panel has been simplified since the app now runs as a pure
-          client-side SPA without a server.
-        </p>
-
-        <div className="mt-8 overflow-hidden rounded-lg border border-border bg-card text-left">
-          <div className="border-b border-border bg-secondary/60 px-4 py-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            Where to manage problems
+            <p className="mt-4 text-zinc-400 text-lg">
+              Secure login for authorized administrators.
+            </p>
           </div>
-          <div className="space-y-3 p-4 text-sm">
-            <a
-              href="https://supabase.com/dashboard/project/whbtztxgqewdbtffdwbu/editor"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 rounded-md border border-border bg-background px-4 py-3 text-foreground transition-colors hover:bg-secondary"
-            >
-              <svg className="h-5 w-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C.101 12.888.701 14.1 1.762 14.1h9.938l.2 8.864c.015.986 1.26 1.41 1.874.637l9.262-11.652c.663-.838.063-2.05-.998-2.05h-9.938l-.2-8.863z"/>
-              </svg>
+
+          <div className="rounded-xl border border-zinc-800 bg-zinc-950/50 p-8">
+            <div className="space-y-6">
               <div>
-                <div className="font-medium">Supabase Table Editor</div>
-                <div className="text-xs text-muted-foreground">
-                  supabase.com/dashboard/project/whbtztxgqewdbtffdwbu/editor
-                </div>
+                <label>Email</label>
+                <Input placeholder="admin@example.com" />
               </div>
-            </a>
-          </div>
-        </div>
 
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="text-sm text-primary underline underline-offset-2 hover:opacity-80"
-          >
-            â† Back to problems
-          </Link>
+              <div>
+                <label>One-Time Password</label>
+                <Input placeholder="123456" />
+              </div>
+
+              <Button>
+                Verify Login
+              </Button>
+            </div>
+          </div>
         </div>
       </main>
     </div>
