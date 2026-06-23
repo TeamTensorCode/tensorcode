@@ -234,6 +234,14 @@ function ProblemPage() {
               >
                 Reset
               </button>
+
+              <button
+                className="rounded-md border border-border px-4 py-2 text-sm hover:bg-secondary"
+                onClick={() => setRevealed((v) => !v)}
+              >
+                {revealed ? "Hide solution" : "Reveal solution"}
+              </button>
+
             </div>
 
             {/* Solution */}
@@ -256,13 +264,6 @@ function ProblemPage() {
                 )}
               </div>
             )}
-
-            <button
-              className="text-sm text-muted-foreground hover:text-foreground"
-              onClick={() => setRevealed((v) => !v)}
-            >
-              {revealed ? "Hide solution" : "Reveal solution"}
-            </button>
 
           </section>
         </div>
