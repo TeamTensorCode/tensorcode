@@ -295,6 +295,11 @@ function ProblemPage() {
                 />
               </label>
             </div>
+            {file && (
+              <div className="rounded-md border border-border bg-background px-3 py-2 text-sm">
+                Selected: {file.name}
+              </div>
+            )}
           </section>
 
             {/* Action buttons */}
