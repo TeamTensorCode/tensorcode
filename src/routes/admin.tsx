@@ -11,12 +11,6 @@ function AdminPage() {
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
 
-  const handleSendOtp = async () => {
-    // TODO: Supabase OTP
-
-    setOtpSent(true);
-  };
-
   const handleVerify = async () => {
     // TODO: Verify OTP
   };
@@ -67,28 +61,6 @@ function AdminPage() {
                   "
                 />
               </div>
-
-              {!otpSent ? (
-                <button
-                  onClick={handleSendOtp}
-                  className="
-                    w-full
-                    rounded-lg
-                    bg-gradient-to-r
-                    from-indigo-600
-                    via-purple-600
-                    to-orange-500
-                    py-3
-                    font-medium
-                    text-white
-                    transition-opacity
-                    hover:opacity-90
-                  "
-                >
-                  Send OTP
-                </button>
-              ) : (
-                <>
                   <div>
                     <label className="mb-2 block text-sm text-zinc-400">
                       One-Time Password
@@ -134,8 +106,6 @@ function AdminPage() {
                   >
                     Verify Login
                   </button>
-                </>
-              )}
             </div>
           </div>
         </div>
