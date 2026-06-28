@@ -8,8 +8,7 @@ export const Route = createFileRoute("/admin")({
 
 function AdminPage() {
   const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
+  const [pwd, setPwd] = useState("");
 
   const handleVerify = async () => {
     // TODO: Verify OTP
@@ -45,7 +44,6 @@ function AdminPage() {
                   placeholder="admin@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  disabled={otpSent}
                   className="
                     w-full
                     rounded-lg
@@ -61,51 +59,51 @@ function AdminPage() {
                   "
                 />
               </div>
-                  <div>
-                    <label className="mb-2 block text-sm text-zinc-400">
-                      One-Time Password
-                    </label>
+              <div>
+                <label className="mb-2 block text-sm text-zinc-400">
+                  Password
+                </label>
 
-                    <input
-                      type="text"
-                      placeholder="123456"
-                      maxLength={6}
-                      value={otp}
-                      onChange={(e) => setOtp(e.target.value)}
-                      className="
-                        w-full
-                        rounded-lg
-                        border
-                        border-zinc-800
-                        bg-zinc-950
-                        px-4
-                        py-3
-                        text-white
-                        placeholder:text-zinc-500
-                        focus:border-indigo-500
-                        focus:outline-none
-                      "
-                    />
-                  </div>
+                <input
+                  type="text"
+                  placeholder="********"
+                  maxLength={6}
+                  value={pwd}
+                  onChange={(e) => setPwd(e.target.value)}
+                  className="
+                    w-full
+                    rounded-lg
+                    border
+                    border-zinc-800
+                    bg-zinc-950
+                    px-4
+                    py-3
+                    text-white
+                    placeholder:text-zinc-500
+                    focus:border-indigo-500
+                    focus:outline-none
+                  "
+                />
+              </div>
 
-                  <button
-                    onClick={handleVerify}
-                    className="
-                      w-full
-                      rounded-lg
-                      bg-gradient-to-r
-                      from-indigo-600
-                      via-purple-600
-                      to-orange-500
-                      py-3
-                      font-medium
-                      text-white
-                      transition-opacity
-                      hover:opacity-90
-                    "
-                  >
-                    Verify Login
-                  </button>
+              <button
+                onClick={handleVerify}
+                className="
+                  w-full
+                  rounded-lg
+                  bg-gradient-to-r
+                  from-indigo-600
+                  via-purple-600
+                  to-orange-500
+                  py-3
+                  font-medium
+                  text-white
+                  transition-opacity
+                  hover:opacity-90
+                "
+              >
+                Login
+              </button>
             </div>
           </div>
         </div>
