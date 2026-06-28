@@ -9,12 +9,12 @@ export const Route = createFileRoute("/admin")({
 
 function AdminPage() {
   const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleVerify = async () => {
     const { error } = await supabase.auth.signInWithPassword({
       email,
-      pwd,
+      password,
     });
   };
 
@@ -69,11 +69,11 @@ function AdminPage() {
                 </label>
 
                 <input
-                  type="text"
+                  type="password"
                   placeholder="********"
                   maxLength={14}
-                  value={pwd}
-                  onChange={(e) => setPwd(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="
                     w-full
                     rounded-lg
