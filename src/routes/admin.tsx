@@ -1,6 +1,7 @@
 ﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin")({
   component: AdminPage,
@@ -11,7 +12,10 @@ function AdminPage() {
   const [pwd, setPwd] = useState("");
 
   const handleVerify = async () => {
-    // TODO: Verify OTP
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      pwd,
+    });
   };
 
   return (
@@ -65,7 +69,7 @@ function AdminPage() {
                 </label>
 
                 <input
-                  type="password"
+                  type="text"
                   placeholder="********"
                   maxLength={14}
                   value={pwd}
