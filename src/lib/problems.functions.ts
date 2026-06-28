@@ -7,20 +7,14 @@ import { supabase } from "./supabase";
 // â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export type ProblemSummary = {
-  id: string;
-  slug: string;
-  title: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  topic: string | null;
-  display_order: number;
 };
 
 export type ProblemDetail = ProblemSummary & {
-  description: string;
+  problem_statement: string;
   starter_code: string | null;
-  language: string;
-  solution_code: string | null;
-  solution_explanation: string | null;
+  training_data: string 
+  solution: string;
+  explanation: string;
   resources: ResourceItem[] | null;
 };
 
@@ -36,9 +30,7 @@ export type ResourceItem = {
 export async function listProblems(): Promise<ProblemSummary[]> {
   const { data, error } = await supabase
     .from("problems")
-    .select("id, slug, title, difficulty, topic, display_order")
-    .eq("published", true)
-    .order("display_order", { ascending: true })
+    .select("id, problem_name, difficulty")
     .order("created_at", { ascending: true });
 
   if (error) throw new Error(error.message);
@@ -50,8 +42,6 @@ export async function getProblemBySlug(slug: string): Promise<ProblemDetail | nu
   const { data, error } = await supabase
     .from("problems")
     .select("*")
-    .eq("slug", slug)
-    .eq("published", true)
     .maybeSingle();
 
   if (error) throw new Error(error.message);
