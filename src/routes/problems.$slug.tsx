@@ -253,7 +253,7 @@ function ProblemPage() {
 
                 <pre className="overflow-x-auto p-4 text-sm">
                   <code>
-                    {data.solution_code ?? "// No solution provided yet."}
+                    {data.solution_code?.replace(/\\n/g, "\n").replace(/\\t/g, "\t") ?? "// No solution provided yet."}
                   </code>
                 </pre>
 
