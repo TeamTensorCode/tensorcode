@@ -7,12 +7,17 @@ import { supabase } from "./supabase";
 // â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export type ProblemSummary = {
+  id: string;
+  problem_name: string;
+  difficulty: string;
 };
 
 export type ProblemDetail = ProblemSummary & {
   problem_statement: string;
   starter_code: string | null;
-  training_data: string 
+  training_data: string;
+  testing_data: string;
+  expected_ouput: string;
   solution: string;
   explanation: string;
   resources: ResourceItem[] | null;
