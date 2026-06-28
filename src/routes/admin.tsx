@@ -65,9 +65,9 @@ function AdminPage() {
                 </label>
 
                 <input
-                  type="text"
+                  type="password"
                   placeholder="********"
-                  maxLength={6}
+                  maxLength={14}
                   value={pwd}
                   onChange={(e) => setPwd(e.target.value)}
                   className="
