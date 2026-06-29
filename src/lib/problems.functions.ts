@@ -48,6 +48,8 @@ export async function getProblemBySlug(slug: string): Promise<ProblemDetail | nu
   const { data, error } = await supabase
     .from("problems")
     .select("*")
+    .select("*")
+    .eq("id", slug)
     .maybeSingle();
 
   if (error) throw new Error(error.message);
