@@ -178,8 +178,15 @@ function HomePage() {
                 </div>
                 <div className="min-w-0">
                   <div className="truncate font-medium text-foreground group-hover:text-primary transition-colors">
+                    {p.name}
+                  </div>
+                  {/* Topic shown inline on mobile */}
+                  <div className="mt-0.5 truncate text-xs text-muted-foreground sm:hidden">
                     {p.topic}
                   </div>
+                </div>
+                <div className="hidden truncate text-xs text-muted-foreground sm:block">
+                  {p.topic}
                 </div>
                 <div className="flex justify-end sm:justify-start">
                   <DifficultyBadge value={p.difficulty} />
