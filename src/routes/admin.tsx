@@ -16,6 +16,12 @@ function AdminPage() {
       email,
       password,
     });
+
+    if (error){
+      alert("Error");
+    }
+
+    alert("Success");
   };
 
   return (
