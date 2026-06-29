@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
@@ -10,6 +10,7 @@ export const Route = createFileRoute("/admin")({
 function AdminPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const handleVerify = async () => {
     const { error } = await supabase.auth.signInWithPassword({
@@ -20,7 +21,7 @@ function AdminPage() {
     if (error){
       alert("Error");
     }else{
-      alert("Success");
+      navigate({to: "/upload"})
     }
   };
 
