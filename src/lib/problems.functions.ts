@@ -14,7 +14,7 @@ export type ProblemSummary = {
 };
 
 export type ProblemDetail = ProblemSummary & {
-  problem_statement: string;
+  statement: string;
   starter_code: string | null;
   training_data: string;
   testing_data: string;
@@ -36,7 +36,7 @@ export type ResourceItem = {
 export async function listProblems(): Promise<ProblemSummary[]> {
   const { data, error } = await supabase
     .from("problems")
-    .select("id, name, difficulty")
+    .select("id, name, topic, difficulty")
     .order("created_at", { ascending: true });
 
   if (error) throw new Error(error.message);
