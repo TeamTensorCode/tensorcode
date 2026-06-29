@@ -116,14 +116,14 @@ function ProblemPage() {
           <section className="h-fit self-start rounded-lg border border-border bg-card p-4">
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2">
               <h1 className="text-lg font-semibold tracking-tight sm:text-xl">
-                {data.topic}
+                {data.name}
               </h1>
               <DifficultyBadge value={data.difficulty} />
             </div>
 
-            {data.name && (
+            {data.topic && (
               <div className="mb-4 text-xs text-muted-foreground">
-                {data.name}
+                {data.topic}
               </div>
             )}
 
