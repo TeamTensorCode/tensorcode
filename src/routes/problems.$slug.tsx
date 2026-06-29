@@ -116,19 +116,19 @@ function ProblemPage() {
           <section className="h-fit self-start rounded-lg border border-border bg-card p-4">
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2">
               <h1 className="text-lg font-semibold tracking-tight sm:text-xl">
-                {data.problem_name}
+                {data.topic}
               </h1>
               <DifficultyBadge value={data.difficulty} />
             </div>
 
-            {data.problem_name && (
+            {data.name && (
               <div className="mb-4 text-xs text-muted-foreground">
-                {data.problem_name}
+                {data.name}
               </div>
             )}
 
             <Markdown>
-              {data.problem_statement.replace(/\\n/g, "\n").replace(/\\t/g, "\t")}
+              {data.statement.replace(/\\n/g, "\n").replace(/\\t/g, "\t")}
             </Markdown>
 
             {resources.length > 0 && (
