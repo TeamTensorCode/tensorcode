@@ -19,9 +19,9 @@ function AdminPage() {
 
     if (error){
       alert("Error");
+    }else{
+      alert("Success");
     }
-
-    alert("Success");
   };
 
   return (
