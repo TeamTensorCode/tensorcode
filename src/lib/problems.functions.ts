@@ -8,7 +8,8 @@ import { supabase } from "./supabase";
 
 export type ProblemSummary = {
   id: string;
-  problem_name: string;
+  name: string;
+  topic: string;
   difficulty: string;
 };
 
@@ -35,7 +36,7 @@ export type ResourceItem = {
 export async function listProblems(): Promise<ProblemSummary[]> {
   const { data, error } = await supabase
     .from("problems")
-    .select("id, problem_name, difficulty")
+    .select("id, name, difficulty")
     .order("created_at", { ascending: true });
 
   if (error) throw new Error(error.message);
