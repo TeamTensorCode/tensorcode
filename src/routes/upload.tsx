@@ -61,7 +61,7 @@ function NewProblemPage() {
     setLoading(true);
 
     const { error } = await supabase.from("problems").insert({
-      title: form.title,
+      name: form.title,
       topic: form.topic,
       statement: form.statement,
       training_data: form.training_data,
