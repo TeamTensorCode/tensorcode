@@ -37,7 +37,7 @@ function HomePage() {
       if (difficulty !== "All" && p.difficulty !== difficulty) return false;
       if (!needle) return true;
       return (
-        p.problem_name.toLowerCase().includes(needle)
+        p.name.toLowerCase().includes(needle)
       );
     });
   }, [problems, searchQuery, difficulty]);
@@ -178,7 +178,7 @@ function HomePage() {
                 </div>
                 <div className="min-w-0">
                   <div className="truncate font-medium text-foreground group-hover:text-primary transition-colors">
-                    {p.problem_name}
+                    {p.topic}
                   </div>
                 </div>
                 <div className="flex justify-end sm:justify-start">
