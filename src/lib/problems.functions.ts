@@ -49,7 +49,7 @@ export async function getProblemBySlug(slug: string): Promise<ProblemDetail | nu
     .from("problems")
     .select("*")
     .select("*")
-    .eq("id", slug)
+    .eq("name", slug)
     .maybeSingle();
 
   if (error) throw new Error(error.message);

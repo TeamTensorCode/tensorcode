@@ -170,7 +170,7 @@ function HomePage() {
               <Link
                 key={p.id}
                 to="/problems/$slug"
-                params={{ slug: p.id }}
+                params={{ slug: p.name }}
                 className="group grid grid-cols-[2rem_1fr_5rem] items-center gap-3 border-b border-border px-3 py-3 text-sm transition-colors last:border-b-0 hover:bg-[var(--surface-hover)] sm:grid-cols-[3rem_1fr_10rem_7rem] sm:gap-0 sm:px-4 sm:py-3.5"
               >
                 <div className="font-mono text-xs text-muted-foreground">
