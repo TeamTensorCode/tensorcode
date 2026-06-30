@@ -97,10 +97,8 @@ function ProblemPage() {
       setTrainingUrl(train.publicUrl);
 
       setTestingUrl(test.publicUrl);
-
-      const expected = await fetchText(data.expected_output);
-
-      setExpectedOutput(expected);
+      
+      setExpectedOutput(data.expected_output);
     })();
   }, [data]);
 
