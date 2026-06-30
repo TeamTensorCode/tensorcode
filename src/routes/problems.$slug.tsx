@@ -45,6 +45,16 @@ function ytEmbed(url: string): string | null {
 
 type Resource = { type?: string; title: string; url: string };
 
+async function fetchText(path: string) {
+  const { data, error } = await supabase.storage
+    .from("data")
+    .download(path);
+
+  if (error) throw error;
+
+  return await data.text();
+}
+
 function ProblemPage() {
   const { slug } = Route.useParams();
 
