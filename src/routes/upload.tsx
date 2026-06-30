@@ -147,6 +147,7 @@ function NewProblemPage() {
       alert("Problem published!");
 
       resetForm();
+      navigate({ to: "/" });
     } catch (err: any) {
       console.error(err);
 
