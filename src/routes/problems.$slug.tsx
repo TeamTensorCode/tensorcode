@@ -220,6 +220,25 @@ function ProblemPage() {
             {/* CSV Upload */}
             <section className="h-fit rounded-lg border border-border bg-card p-4">
               <div className="space-y-4">
+                <div className="flex gap-2">
+
+                  <a
+                    href={trainingUrl}
+                    download
+                    className="rounded-md border border-border px-3 py-2 text-sm hover:bg-secondary"
+                  >
+                    Download Training CSV
+                  </a>
+
+                  <a
+                    href={testingUrl}
+                    download
+                    className="rounded-md border border-border px-3 py-2 text-sm hover:bg-secondary"
+                  >
+                    Download Testing CSV
+                  </a>
+
+                </div>
                 <div>
                   <h2 className="text-lg font-semibold">Upload Results</h2>
                   <p className="text-sm text-muted-foreground">
