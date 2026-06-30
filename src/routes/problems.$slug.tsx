@@ -73,7 +73,14 @@ function ProblemPage() {
   const [resetKey, setResetKey] = useState(0);
   const [trainingUrl, setTrainingUrl] = useState("");
   const [testingUrl, setTestingUrl] = useState("");
+  const [result, setResult] = useState<{
+    status: string;
+    metric_used: string;
+    raw_score: number;
+    normalized_score_percentage: number;
+  } | null>(null);
 
+  const [showResult, setShowResult] = useState(false);
   const [expectedOutput, setExpectedOutput] = useState("");
 
   useEffect(() => {
@@ -97,7 +104,7 @@ function ProblemPage() {
       setTrainingUrl(train.publicUrl);
 
       setTestingUrl(test.publicUrl);
-      
+
       setExpectedOutput(data.expected_output);
     })();
   }, [data]);
