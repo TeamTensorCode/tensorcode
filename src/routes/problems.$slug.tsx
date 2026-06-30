@@ -288,9 +288,12 @@ function ProblemPage() {
                 className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
                 disabled={!file}
                 onClick={() => {
+                  const { data: res_expected } = supabase.storage
+                    .from("data")
+                    .getPublicUrl(expectedOutput);
                   const result = await evaluateSubmission({
                       userFile: file!,
-                      solutionFile: expectedOutput,
+                      solutionFile: res_expected.publicUrl,
                       metric: data.metric,
                       minScore: data.min_score,
                       maxScore: data.max_score,
