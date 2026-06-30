@@ -295,7 +295,7 @@ function ProblemPage() {
               <div className="rounded-lg border border-border bg-card">
                 <pre className="overflow-x-auto p-4 text-sm">
                   <code>
-                    {data.solution?.replace(/\\n/g, "\n").replace(/\\t/g, "\t") ?? "// No solution provided yet."}
+                    {solution}
                   </code>
                 </pre>
 
