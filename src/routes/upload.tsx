@@ -44,9 +44,14 @@ function NewProblemPage() {
   const updateField = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
+    const { name, value } = e.target;
+
     setForm((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]:
+        name === "minScore" || name === "maxScore"
+          ? Number(value)
+          : value,
     }));
   };
 
