@@ -31,6 +31,7 @@ export async function evaluateSubmission({
     if (!response.ok) {
         const err = await response.json();
         throw new Error(err.error);
+        return "Error Occurred"
     }
 
     return await response.json();
