@@ -74,14 +74,6 @@ function NewProblemPage() {
     });
   };
 
-  const slug = (title: string) =>
-    title
-      .trim()
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-");
-
   const uploadFile = async (
     problemId: string,
     filename: string,
