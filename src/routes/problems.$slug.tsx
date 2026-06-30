@@ -338,7 +338,7 @@ function ProblemPage() {
               >
                 {revealed ? "Hide solution" : "Reveal solution"}
               </button>
-              
+
               <button
                 disabled={!result}
                 onClick={() => setShowResult((v) => !v)}
@@ -363,6 +363,85 @@ function ProblemPage() {
                     <Markdown>{explanation}</Markdown>
                   </div>
                 )}
+              </div>
+            )}
+
+            
+            {showResult && result && (
+              <div className="rounded-lg border border-border bg-card p-5">
+
+                <h2 className="mb-4 text-lg font-semibold">
+                  Evaluation Results
+                </h2>
+
+                <div className="space-y-3">
+
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      Status
+                    </span>
+
+                    <span className="font-medium">
+                      {result.status}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      Metric
+                    </span>
+
+                    <span className="font-medium">
+                      {result.metric_used}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      Raw Score
+                    </span>
+
+                    <span className="font-medium">
+                      {result.raw_score}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      TensorCode Score
+                    </span>
+
+                    <span className="text-xl font-bold text-primary">
+                      {result.normalized_score_percentage.toFixed(2)}%
+                    </span>
+                  </div>
+
+                  <div className="mt-4">
+                    <div className="mb-2 flex justify-between text-sm">
+                      <span>Score</span>
+                      <span>
+                        {result.normalized_score_percentage.toFixed(1)}%
+                      </span>
+                    </div>
+
+                    <div className="h-3 overflow-hidden rounded-full bg-secondary">
+                      <div
+                        className="h-full bg-primary transition-all"
+                        style={{
+                          width: `${Math.max(
+                            0,
+                            Math.min(
+                              result.normalized_score_percentage,
+                              100
+                            )
+                          )}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                </div>
+
               </div>
             )}
 
