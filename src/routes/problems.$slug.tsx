@@ -109,7 +109,7 @@ function ProblemPage() {
         <SiteHeader />
         <main className="mx-auto max-w-6xl px-4 py-8">
           <div className="mb-4 h-3 w-24 animate-pulse rounded bg-secondary" />
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
             <div className="h-96 animate-pulse rounded-lg bg-card" />
             <div className="h-96 animate-pulse rounded-lg bg-card" />
           </div>
@@ -161,7 +161,7 @@ function ProblemPage() {
 
         <div className="grid gap-6 lg:grid-cols-2">
           {/* LEFT: Problem */}
-          <section className="h-fit self-start rounded-lg border border-border bg-card p-4">
+          <section className="min-w-0 h-fit self-start rounded-lg border border-border bg-card p-4">
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2">
               <h1 className="text-lg font-semibold tracking-tight sm:text-xl">
                 {data.name}
