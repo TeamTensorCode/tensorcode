@@ -21,7 +21,7 @@ export async function evaluateSubmission({
     form.append("max_score", String(maxScore));
 
     const response = await fetch(
-        "https://YOUR-VERCEL-URL.vercel.app/api/evaluate",
+        "https://backend-nine-gules-54.vercel.app/api/evaluate",
         {
             method: "POST",
             body: form,
