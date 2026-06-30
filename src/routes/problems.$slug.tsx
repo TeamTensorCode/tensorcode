@@ -1,6 +1,6 @@
 ﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getProblemBySlug } from "@/lib/problems.functions";
 import { SiteHeader, DifficultyBadge } from "@/components/SiteHeader";
 import { supabase } from "@/lib/supabase";
@@ -75,34 +75,34 @@ function ProblemPage() {
 
   const [expectedOutput, setExpectedOutput] = useState("");
 
-  useState(() => {
-  if (!data) return;
+  useEffect(() => {
+    if (!data) return;
 
-  (async () => {
-    setStatement(await fetchText(data.statement));
+    (async () => {
+      setStatement(await fetchText(data.statement));
 
-    setSolution(await fetchText(data.solution));
+      setSolution(await fetchText(data.solution));
 
-    setExplanation(await fetchText(data.explanation));
+      setExplanation(await fetchText(data.explanation));
 
-    const { data: train } = supabase.storage
-      .from("data")
-      .getPublicUrl(data.training_data);
+      const { data: train } = supabase.storage
+        .from("data")
+        .getPublicUrl(data.training_data);
 
-    const { data: test } = supabase.storage
-      .from("data")
-      .getPublicUrl(data.testing_data);
+      const { data: test } = supabase.storage
+        .from("data")
+        .getPublicUrl(data.testing_data);
 
-    setTrainingUrl(train.publicUrl);
+      setTrainingUrl(train.publicUrl);
 
-    setTestingUrl(test.publicUrl);
+      setTestingUrl(test.publicUrl);
 
-    const expected = await fetchText(data.expected_output);
+      const expected = await fetchText(data.expected_output);
 
-    setExpectedOutput(expected);
+      setExpectedOutput(expected);
     })();
-  });
-  
+  }, [data]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen">
