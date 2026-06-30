@@ -287,17 +287,26 @@ function ProblemPage() {
               <button
                 className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
                 disabled={!file}
-                onClick={() => {
-                  const { data: res_expected } = supabase.storage
+                onClick={async () => {
+                  const { data: blob, error } = await supabase.storage
                     .from("data")
-                    .getPublicUrl(expectedOutput);
+                    .download(expectedOutput);
+
+                  if (error) {
+                    throw error;
+                  }
+
+                  const res_expected = new File(
+                    [blob],
+                    "expected_output.csv",
+                    { type: "text/csv" }
+                  );
                   const result = await evaluateSubmission({
                       userFile: file!,
                       solutionFile: res_expected,
                       metric: data.metric,
                       minScore: data.min_score,
                       maxScore: data.max_score,
-                      targetColumn: data.target_column,
                   });
 
                   console.log(result);
