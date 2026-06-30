@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -7,7 +7,17 @@ export const Route = createFileRoute("/upload")({
   component: NewProblemPage,
 });
 
+async function secure() {
+  const navigate = useNavigate()
+  const session = await supabase.auth.getSession();  
+
+  if (!session.data.session) {
+      navigate({to: "/admin"});
+  }
+}
+
 function NewProblemPage() {
+  secure()
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
