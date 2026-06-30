@@ -18,7 +18,7 @@ export type ProblemDetail = ProblemSummary & {
   starter_code: string | null;
   training_data: string;
   testing_data: string;
-  expected_ouput: string;
+  expected_output: string;
   solution: string;
   explanation: string;
   resources: ResourceItem[] | null;

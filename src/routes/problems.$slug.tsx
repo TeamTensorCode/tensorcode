@@ -63,6 +63,34 @@ function ProblemPage() {
     queryFn: () => getProblemBySlug(slug),
   });
 
+  useState(() => {
+  if (!data) return;
+
+  (async () => {
+    setStatement(await fetchText(data.statement));
+
+    setSolution(await fetchText(data.solution));
+
+    setExplanation(await fetchText(data.explanation));
+
+    const { data: train } = supabase.storage
+      .from("data")
+      .getPublicUrl(data.training_data);
+
+    const { data: test } = supabase.storage
+      .from("data")
+      .getPublicUrl(data.testing_data);
+
+    setTrainingUrl(train.publicUrl);
+
+    setTestingUrl(test.publicUrl);
+
+    const expected = await fetchText(data.expected_output);
+
+    setExpectedOutput(expected);
+    })();
+  });
+
   const [file, setFile] = useState<File | null>(null);
   const [revealed, setRevealed] = useState(false);
 
