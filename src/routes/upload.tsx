@@ -26,6 +26,9 @@ function NewProblemPage() {
   const [form, setForm] = useState({
     title: "",
     topic: "",
+    metric: "",
+    minScore: "",
+    maxScore: "",
     difficulty: "Easy",
   });
 
@@ -61,6 +64,9 @@ function NewProblemPage() {
     setForm({
       title: "",
       topic: "",
+      metric: "",
+      minScore: "",
+      maxScore: "",
       difficulty: "Easy",
     });
 
@@ -139,6 +145,9 @@ function NewProblemPage() {
           expected_output: expected,
           solution,
           explanation,
+          metric: form.metric,
+          min_score: form.minScore,
+          max_score: form.maxScore,
           difficulty: form.difficulty,
         });
 
@@ -259,6 +268,48 @@ function NewProblemPage() {
               file={files.expected}
               onChange={(f) => updateFile("expected", f)}
             />
+
+            {/* Metric */}
+            <div>
+              <label className="mb-2 block text-sm font-medium">
+                Metric
+              </label>
+
+              <input
+                name="metric"
+                value={form.metric}
+                onChange={updateField}
+                className="w-full rounded-md border border-border bg-background px-4 py-2"
+              />
+            </div>
+
+            {/* Min Score */}
+            <div>
+              <label className="mb-2 block text-sm font-medium">
+                Min Score
+              </label>
+
+              <input
+                name="minScore"
+                value={form.minScore}
+                onChange={updateField}
+                className="w-full rounded-md border border-border bg-background px-4 py-2"
+              />
+            </div>
+
+            {/* Max score */}
+            <div>
+              <label className="mb-2 block text-sm font-medium">
+                Max Score
+              </label>
+
+              <input
+                name="maxScore"
+                value={form.maxScore}
+                onChange={updateField}
+                className="w-full rounded-md border border-border bg-background px-4 py-2"
+              />
+            </div>
 
             {/* Solution */}
             <FilePicker
