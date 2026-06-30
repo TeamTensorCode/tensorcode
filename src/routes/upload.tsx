@@ -6,35 +6,40 @@ export const Route = createFileRoute("/upload")({
   component: NewProblemPage,
 });
 
-async function secure() {
-  const navigate = useNavigate()
-  const session = await supabase.auth.getSession();  
-
-  if (!session.data.session) {
-      navigate({to: "/admin"});
-  }
-}
-
 function NewProblemPage() {
-  secure()
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+
+      if (!data.session) {
+        navigate({ to: "/admin" });
+      }
+    };
+
+    checkSession();
+  }, [navigate]);
 
   const [form, setForm] = useState({
     title: "",
     topic: "",
-    statement: "",
-    training_data: "",
-    testing_data: "",
-    expected_output: "",
-    solution: "",
-    explanation: "",
     difficulty: "Easy",
   });
 
+  const [files, setFiles] = useState({
+    statement: null as File | null,
+    training: null as File | null,
+    testing: null as File | null,
+    expected: null as File | null,
+    solution: null as File | null,
+    explanation: null as File | null,
+  });
+
   const updateField = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({
       ...prev,
@@ -42,55 +47,136 @@ function NewProblemPage() {
     }));
   };
 
+  const updateFile = (
+    key: keyof typeof files,
+    file: File | null
+  ) => {
+    setFiles((prev) => ({
+      ...prev,
+      [key]: file,
+    }));
+  };
+
   const resetForm = () => {
     setForm({
       title: "",
       topic: "",
-      statement: "",
-      training_data: "",
-      testing_data: "",
-      expected_output: "",
-      solution: "",
-      explanation: "",
       difficulty: "Easy",
     });
+
+    setFiles({
+      statement: null,
+      training: null,
+      testing: null,
+      expected: null,
+      solution: null,
+      explanation: null,
+    });
+  };
+
+  const slug = (title: string) =>
+    title
+      .trim()
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+
+  const uploadFile = async (
+    problemId: string,
+    filename: string,
+    file: File
+  ) => {
+    const path = `${problemId}/${filename}`;
+
+    const { error } = await supabase.storage
+      .from("data")
+      .upload(path, file, {
+        upsert: true,
+      });
+
+    if (error) throw error;
+
+    return path;
   };
 
   const handleSubmit = async () => {
     if (
       !form.title ||
       !form.topic ||
-      !form.statement ||
-      !form.solution
+      !files.statement ||
+      !files.training ||
+      !files.testing ||
+      !files.expected ||
+      !files.solution ||
+      !files.explanation
     ) {
-      alert("Please fill all required fields.");
+      alert("Please complete every field.");
       return;
     }
 
     setLoading(true);
 
-    const { error } = await supabase.from("problems").insert({
-      name: form.title,
-      topic: form.topic,
-      statement: form.statement,
-      training_data: form.training_data,
-      testing_data: form.testing_data,
-      expected_output: form.expected_output,
-      solution: form.solution,
-      explanation: form.explanation,
-      difficulty: form.difficulty,
-    });
+    const id = crypto.randomUUID();
 
-    setLoading(false);
+    try {
+      const [
+        statement,
+        training,
+        testing,
+        expected,
+        solution,
+        explanation,
+      ] = await Promise.all([
+        uploadFile(id, "statement.md", files.statement),
+        uploadFile(id, "training.csv", files.training),
+        uploadFile(id, "testing.csv", files.testing),
+        uploadFile(id, "expected_output.csv", files.expected),
+        uploadFile(id, "solution.py", files.solution),
+        uploadFile(id, "explanation.md", files.explanation),
+      ]);
 
-    if (error) {
-      alert(error.message);
-      return;
+      const { error } = await supabase
+        .from("problems")
+        .insert({
+          id,
+          slug: slug(form.title),
+
+          name: form.title,
+          topic: form.topic,
+
+          statement,
+          training_data: training,
+          testing_data: testing,
+          expected_output: expected,
+
+          solution,
+          explanation,
+
+          difficulty: form.difficulty,
+        });
+
+      if (error) throw error;
+
+      alert("Problem published!");
+
+      resetForm();
+    } catch (err: any) {
+      console.error(err);
+
+      await supabase.storage.from("data").remove([
+        `${id}/statement.md`,
+        `${id}/training.csv`,
+        `${id}/testing.csv`,
+        `${id}/expected_output.csv`,
+        `${id}/solution.py`,
+        `${id}/explanation.md`,
+      ]);
+
+      alert(err.message);
     }
 
-    alert("Problem published successfully!");
-
-    resetForm();
+    setLoading(false);
   };
 
   return (
