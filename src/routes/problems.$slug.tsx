@@ -215,7 +215,7 @@ function ProblemPage() {
           </section>
 
           {/* RIGHT: Upload + Submit */}
-          <section className="flex min-w-0 flex-col gap-4">
+          <section className="min-w-0 flex flex-col gap-4">
 
             {/* CSV Upload */}
             <section className="h-fit rounded-lg border border-border bg-card p-4">
