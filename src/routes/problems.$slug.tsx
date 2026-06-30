@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getProblemBySlug } from "@/lib/problems.functions";
 import { SiteHeader, DifficultyBadge } from "@/components/SiteHeader";
+import { supabase } from "@/lib/supabase";
 import { Markdown } from "@/components/Markdown";
 
 export const Route = createFileRoute("/problems/$slug")({
