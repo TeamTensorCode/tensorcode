@@ -73,6 +73,7 @@ function ProblemPage() {
   const [resetKey, setResetKey] = useState(0);
   const [trainingUrl, setTrainingUrl] = useState("");
   const [testingUrl, setTestingUrl] = useState("");
+  const [evaluating, setEvaluating] = useState(false);
   const [result, setResult] = useState<{
     status: string;
     metric_used: string;
@@ -325,7 +326,8 @@ function ProblemPage() {
                 className="rounded-md border border-border px-4 py-2 text-sm hover:bg-secondary"
                 onClick={() => {
                   setFile(null);
-                  setResetKey((k)=>k+1)
+                  setResetKey((k)=>k+1);
+                  setResult(null)
                 }}
 
               >
@@ -366,7 +368,7 @@ function ProblemPage() {
               </div>
             )}
 
-            
+
             {showResult && result && (
               <div className="rounded-lg border border-border bg-card p-5">
 
