@@ -306,6 +306,8 @@ function NewProblemPage() {
               </label>
 
               <input
+                type="number"
+                step="any"
                 name="maxScore"
                 value={form.maxScore}
                 onChange={updateField}
