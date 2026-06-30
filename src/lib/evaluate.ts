@@ -7,7 +7,7 @@ export async function evaluateSubmission({
     targetColumn,
 }: {
     userFile: File;
-    solutionFile: string;
+    solutionFile: File;
     metric: string;
     minScore: number;
     maxScore: number;

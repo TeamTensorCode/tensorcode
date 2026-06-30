@@ -293,7 +293,7 @@ function ProblemPage() {
                     .getPublicUrl(expectedOutput);
                   const result = await evaluateSubmission({
                       userFile: file!,
-                      solutionFile: res_expected.publicUrl,
+                      solutionFile: res_expected,
                       metric: data.metric,
                       minScore: data.min_score,
                       maxScore: data.max_score,
