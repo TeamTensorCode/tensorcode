@@ -338,7 +338,14 @@ function ProblemPage() {
               >
                 {revealed ? "Hide solution" : "Reveal solution"}
               </button>
-
+              
+              <button
+                disabled={!result}
+                onClick={() => setShowResult((v) => !v)}
+                className="rounded-md border border-border px-4 py-2 text-sm hover:bg-secondary disabled:opacity-50"
+              >
+                {showResult ? "Hide Results" : "Show Results"}
+              </button>
             </div>
 
             {/* Solution */}
