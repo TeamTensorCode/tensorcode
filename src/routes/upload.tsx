@@ -27,8 +27,8 @@ function NewProblemPage() {
     title: "",
     topic: "",
     metric: "",
-    minScore: "",
-    maxScore: "",
+    minScore: 0,
+    maxScore: 1,
     difficulty: "Easy",
   });
 
@@ -65,8 +65,8 @@ function NewProblemPage() {
       title: "",
       topic: "",
       metric: "",
-      minScore: "",
-      maxScore: "",
+      minScore: 0,
+      maxScore: 1,
       difficulty: "Easy",
     });
 
