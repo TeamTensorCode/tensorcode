@@ -335,6 +335,7 @@ function ProblemPage() {
                 onClick={() => {
                   setFile(null);
                   setResetKey((k)=>k+1);
+                  setShowResult((v) => !v);
                   setResult(null)
                 }}
 
