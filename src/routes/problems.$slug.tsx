@@ -320,6 +320,7 @@ function ProblemPage() {
 
                 {explanation && (
                   <div className="border-t border-border px-4 py-3">
+                    <h3>Explanation</h3>
                     <Markdown>{explanation}</Markdown>
                   </div>
                 )}
