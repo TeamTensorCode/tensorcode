@@ -291,8 +291,8 @@ function ProblemPage() {
             {/* Actions */}
             <div className="flex flex-wrap items-center gap-2">
               <button
-                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
-                disabled={!file}
+                disabled={!file || evaluating}
+                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50"
                 onClick={async () => {
                   setEvaluating(true)
                   const { data: blob, error } = await supabase.storage
@@ -320,8 +320,14 @@ function ProblemPage() {
                   setEvaluating(false);
                   setShowResult(true)
                 }}
-              >
-                Submit
+              >{evaluating ? (
+                      <div className="flex items-center gap-2">
+                          <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                          Evaluating...
+                      </div>
+                  ) : (
+                      "Submit"
+                  )}
               </button>
 
               <button
