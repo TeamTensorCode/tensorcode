@@ -69,7 +69,7 @@ function ProblemPage() {
   const [statement, setStatement] = useState("");
   const [solution, setSolution] = useState("");
   const [explanation, setExplanation] = useState("");
-
+  const [resetKey, setResetKey] = useState(0);
   const [trainingUrl, setTrainingUrl] = useState("");
   const [testingUrl, setTestingUrl] = useState("");
 
@@ -262,6 +262,7 @@ function ProblemPage() {
 
                   <input
                     id="csv-upload"
+                    key={resetKey}
                     type="file"
                     accept=".csv,text/csv"
                     className="hidden"
@@ -295,7 +296,11 @@ function ProblemPage() {
 
               <button
                 className="rounded-md border border-border px-4 py-2 text-sm hover:bg-secondary"
-                onClick={() => setFile(null)}
+                onClick={() => {
+                  setFile(null);
+                  setResetKey((k)=>k+1)
+                }}
+
               >
                 Reset
               </button>
