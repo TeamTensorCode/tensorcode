@@ -290,6 +290,8 @@ function NewProblemPage() {
               </label>
 
               <input
+                type="number"
+                step="any"
                 name="minScore"
                 value={form.minScore}
                 onChange={updateField}
