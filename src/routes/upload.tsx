@@ -1,8 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { SiteHeader } from "@/components/SiteHeader";
-
 export const Route = createFileRoute("/upload")({
   component: NewProblemPage,
 });
