@@ -139,20 +139,14 @@ function NewProblemPage() {
       const { error } = await supabase
         .from("problems")
         .insert({
-          id,
-          slug: slug(form.title),
-
           name: form.title,
           topic: form.topic,
-
           statement,
           training_data: training,
           testing_data: testing,
           expected_output: expected,
-
           solution,
           explanation,
-
           difficulty: form.difficulty,
         });
 
