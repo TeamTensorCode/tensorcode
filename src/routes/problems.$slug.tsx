@@ -56,6 +56,15 @@ function ProblemPage() {
   const [file, setFile] = useState<File | null>(null);
   const [revealed, setRevealed] = useState(false);
 
+  const [statement, setStatement] = useState("");
+  const [solution, setSolution] = useState("");
+  const [explanation, setExplanation] = useState("");
+
+  const [trainingUrl, setTrainingUrl] = useState("");
+  const [testingUrl, setTestingUrl] = useState("");
+
+  const [expectedOutput, setExpectedOutput] = useState("");
+
   if (isLoading) {
     return (
       <div className="min-h-screen">
