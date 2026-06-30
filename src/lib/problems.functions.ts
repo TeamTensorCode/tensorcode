@@ -19,6 +19,9 @@ export type ProblemDetail = ProblemSummary & {
   training_data: string;
   testing_data: string;
   expected_output: string;
+  metric: string;
+  min_score: number;
+  max_score: number;
   solution: string;
   explanation: string;
   resources: ResourceItem[] | null;
