@@ -308,17 +308,21 @@ function ProblemPage() {
                     "expected_output.csv",
                     { type: "text/csv" }
                   );
-                  const result = await evaluateSubmission({
-                      userFile: file!,
-                      solutionFile: res_expected,
-                      metric: data.metric,
-                      minScore: data.min_score,
-                      maxScore: data.max_score,
-                  });
 
-                  setResult(result);
-                  setEvaluating(false);
-                  setShowResult(true)
+                  try{
+                    const result = await evaluateSubmission({
+                        userFile: file!,
+                        solutionFile: res_expected,
+                        metric: data.metric,
+                        minScore: data.min_score,
+                        maxScore: data.max_score,
+                    });
+
+                    setResult(result);
+                    setShowResult(true);
+                  }finally{
+                    setEvaluating(false);
+                  }
                 }}
               >{evaluating ? (
                       <div className="flex items-center gap-2">
