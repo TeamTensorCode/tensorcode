@@ -175,9 +175,7 @@ function ProblemPage() {
               </div>
             )}
 
-            <Markdown>
-              {data.statement.replace(/\\n/g, "\n").replace(/\\t/g, "\t")}
-            </Markdown>
+            <Markdown>{statement}</Markdown>
 
             {resources.length > 0 && (
               <div className="mt-8 space-y-4">
