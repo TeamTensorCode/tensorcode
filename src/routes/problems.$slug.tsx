@@ -299,9 +299,9 @@ function ProblemPage() {
                   </code>
                 </pre>
 
-                {data.explanation && (
+                {explanation && (
                   <div className="border-t border-border px-4 py-3">
-                    <Markdown>{data.explanation}</Markdown>
+                    <Markdown>{explanation}</Markdown>
                   </div>
                 )}
               </div>
