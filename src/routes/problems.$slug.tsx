@@ -314,8 +314,8 @@ function ProblemPage() {
                       maxScore: data.max_score,
                   });
 
-                  console.log(result);
-                  console.log("Submitting file:", file);
+                  setResult(result);
+                  setShowResult(true)
                 }}
               >
                 Submit
