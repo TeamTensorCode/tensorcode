@@ -195,31 +195,31 @@ function NewProblemPage() {
 
           <div className="space-y-6">
 
-            {/* Problem Title */}
+            {/* Title */}
             <div>
               <label className="mb-2 block text-sm font-medium">
-                Problem Title *
+                Problem Title
               </label>
 
               <input
                 name="title"
                 value={form.title}
                 onChange={updateField}
-                className="w-full rounded-md border border-border bg-background px-4 py-2 outline-none focus:border-primary"
+                className="w-full rounded-md border border-border bg-background px-4 py-2"
               />
             </div>
 
             {/* Topic */}
             <div>
               <label className="mb-2 block text-sm font-medium">
-                Problem Topic *
+                Problem Topic
               </label>
 
               <input
                 name="topic"
                 value={form.topic}
                 onChange={updateField}
-                className="w-full rounded-md border border-border bg-background px-4 py-2 outline-none focus:border-primary"
+                className="w-full rounded-md border border-border bg-background px-4 py-2"
               />
             </div>
 
@@ -242,101 +242,58 @@ function NewProblemPage() {
             </div>
 
             {/* Statement */}
-            <div>
-              <label className="mb-2 block text-sm font-medium">
-                Problem Statement *
-              </label>
+            <FilePicker
+              title="Problem Statement (.md)"
+              accept=".md,text/markdown"
+              file={files.statement}
+              onChange={(f) => updateFile("statement", f)}
+            />
 
-              <textarea
-                name="statement"
-                rows={8}
-                value={form.statement}
-                onChange={updateField}
-                className="w-full rounded-md border border-border bg-background p-3 outline-none focus:border-primary"
-              />
-            </div>
+            {/* Training */}
+            <FilePicker
+              title="Training Data (.csv)"
+              accept=".csv,text/csv"
+              file={files.training}
+              onChange={(f) => updateFile("training", f)}
+            />
 
-            {/* Training Data */}
-            <div>
-              <label className="mb-2 block text-sm font-medium">
-                Training Data
-              </label>
-
-              <textarea
-                name="training_data"
-                rows={6}
-                value={form.training_data}
-                onChange={updateField}
-                className="w-full rounded-md border border-border bg-background p-3 outline-none focus:border-primary"
-              />
-            </div>
-
-            {/* Testing Data */}
-            <div>
-              <label className="mb-2 block text-sm font-medium">
-                Testing Data
-              </label>
-
-              <textarea
-                name="testing_data"
-                rows={6}
-                value={form.testing_data}
-                onChange={updateField}
-                className="w-full rounded-md border border-border bg-background p-3 outline-none focus:border-primary"
-              />
-            </div>
+            {/* Testing */}
+            <FilePicker
+              title="Testing Data (.csv)"
+              accept=".csv,text/csv"
+              file={files.testing}
+              onChange={(f) => updateFile("testing", f)}
+            />
 
             {/* Expected Output */}
-            <div>
-              <label className="mb-2 block text-sm font-medium">
-                Expected Output
-              </label>
-
-              <textarea
-                name="expected_output"
-                rows={6}
-                value={form.expected_output}
-                onChange={updateField}
-                className="w-full rounded-md border border-border bg-background p-3 outline-none focus:border-primary"
-              />
-            </div>
+            <FilePicker
+              title="Expected Output (.csv)"
+              accept=".csv,text/csv"
+              file={files.expected}
+              onChange={(f) => updateFile("expected", f)}
+            />
 
             {/* Solution */}
-            <div>
-              <label className="mb-2 block text-sm font-medium">
-                Solution *
-              </label>
-
-              <textarea
-                name="solution"
-                rows={8}
-                value={form.solution}
-                onChange={updateField}
-                className="w-full rounded-md border border-border bg-background p-3 font-mono outline-none focus:border-primary"
-              />
-            </div>
+            <FilePicker
+              title="Solution (.py)"
+              accept=".py,text/x-python"
+              file={files.solution}
+              onChange={(f) => updateFile("solution", f)}
+            />
 
             {/* Explanation */}
-            <div>
-              <label className="mb-2 block text-sm font-medium">
-                Explanation
-              </label>
+            <FilePicker
+              title="Explanation (.md)"
+              accept=".md,text/markdown"
+              file={files.explanation}
+              onChange={(f) => updateFile("explanation", f)}
+            />
 
-              <textarea
-                name="explanation"
-                rows={8}
-                value={form.explanation}
-                onChange={updateField}
-                className="w-full rounded-md border border-border bg-background p-3 outline-none focus:border-primary"
-              />
-            </div>
-
-            {/* Buttons */}
             <div className="flex gap-3 pt-2">
               <button
                 onClick={handleSubmit}
                 disabled={loading}
-                className="rounded-md bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md bg-primary px-5 py-2 font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50"
               >
                 {loading ? "Publishing..." : "Publish Problem"}
               </button>
@@ -344,7 +301,7 @@ function NewProblemPage() {
               <button
                 onClick={resetForm}
                 disabled={loading}
-                className="rounded-md border border-border px-5 py-2 transition hover:bg-secondary"
+                className="rounded-md border border-border px-5 py-2 hover:bg-secondary"
               >
                 Reset
               </button>
@@ -355,4 +312,55 @@ function NewProblemPage() {
       </main>
     </div>
   );
-}
+
+  }
+
+  type PickerProps = {
+    title: string;
+    accept: string;
+    file: File | null;
+    onChange: (file: File | null) => void;
+  };
+
+  function FilePicker({
+    title,
+    accept,
+    file,
+    onChange,
+  }: PickerProps) {
+    return (
+      <div>
+        <label className="mb-2 block text-sm font-medium">
+          {title}
+        </label>
+
+        <label
+          className="
+            flex cursor-pointer items-center justify-center
+            rounded-lg border border-dashed border-border
+            bg-background px-6 py-6 transition
+            hover:border-primary
+          "
+        >
+          <div className="text-center">
+            <div className="font-medium">
+              {file ? file.name : "Choose File"}
+            </div>
+
+            <div className="mt-1 text-sm text-muted-foreground">
+              Click to browse
+            </div>
+          </div>
+
+          <input
+            type="file"
+            accept={accept}
+            className="hidden"
+            onChange={(e) =>
+              onChange(e.target.files?.[0] ?? null)
+            }
+          />
+        </label>
+      </div>
+    );
+  }
