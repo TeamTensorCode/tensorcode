@@ -35,7 +35,7 @@ function AboutPage() {
             >
               teamtensorcode@gmail.com
             </a>
-            .
+            . We aim to respond as quickly as possible.
           </p>
         </div>
       </main>
