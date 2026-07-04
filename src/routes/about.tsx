@@ -20,9 +20,7 @@ function AboutPage() {
             Each problem ships with a clean reference solution and a short video walkthrough.
           </p>
           <p>
-            Problems cover the math and code that actually appears in ML interviews
-            from softmax and cross-entropy to attention mechanisms, layer norm, and
-            positional encodings.
+            TensorCode provides an environment where 
           </p>
           <p>
             Everything is free right now while we're testing demand. If this is useful to
