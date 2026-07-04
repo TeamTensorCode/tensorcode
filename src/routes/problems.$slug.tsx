@@ -56,6 +56,18 @@ async function fetchText(path: string) {
   return await data.text();
 }
 
+function LoadingPlaceholder() {
+  return (
+    <div className="space-y-2 rounded-lg border border-border/60 bg-background/40 p-4">
+      <div className="h-4 w-3/4 animate-pulse rounded bg-secondary" />
+      <div className="h-4 w-full animate-pulse rounded bg-secondary" />
+      <div className="h-4 w-5/6 animate-pulse rounded bg-secondary" />
+      <div className="h-4 w-2/3 animate-pulse rounded bg-secondary" />
+      <div className="mt-3 text-sm text-muted-foreground">Loading ...</div>
+    </div>
+  );
+}
+
 function ProblemPage() {
   const { slug } = Route.useParams();
 
@@ -70,6 +82,8 @@ function ProblemPage() {
   const [statement, setStatement] = useState("");
   const [solution, setSolution] = useState("");
   const [explanation, setExplanation] = useState("");
+  const [isContentLoading, setIsContentLoading] = useState(true);
+  const [isUrlsReady, setIsUrlsReady] = useState(false);
   const [resetKey, setResetKey] = useState(0);
   const [trainingUrl, setTrainingUrl] = useState("");
   const [testingUrl, setTestingUrl] = useState("");
@@ -85,29 +99,69 @@ function ProblemPage() {
   const [expectedOutput, setExpectedOutput] = useState("");
 
   useEffect(() => {
-    if (!data) return;
+    if (!data) {
+      setIsContentLoading(false);
+      setIsUrlsReady(false);
+      setStatement("");
+      setSolution("");
+      setExplanation("");
+      setTrainingUrl("");
+      setTestingUrl("");
+      setExpectedOutput("");
+      return;
+    }
 
-    (async () => {
-      setStatement(await fetchText(data.statement));
+    let isMounted = true;
 
-      setSolution(await fetchText(data.solution));
+    const loadProblemData = async () => {
+      setIsContentLoading(true);
+      setIsUrlsReady(false);
+      setStatement("");
+      setSolution("");
+      setExplanation("");
+      setTrainingUrl("");
+      setTestingUrl("");
+      setExpectedOutput("");
 
-      setExplanation(await fetchText(data.explanation));
+      try {
+        const [statementText, solutionText, explanationText] = await Promise.all([
+          fetchText(data.statement),
+          fetchText(data.solution),
+          fetchText(data.explanation),
+        ]);
 
-      const { data: train } = supabase.storage
-        .from("data")
-        .getPublicUrl(data.training_data);
+        if (!isMounted) return;
 
-      const { data: test } = supabase.storage
-        .from("data")
-        .getPublicUrl(data.testing_data);
+        setStatement(statementText);
+        setSolution(solutionText);
+        setExplanation(explanationText);
 
-      setTrainingUrl(train.publicUrl);
+        const { data: train } = supabase.storage
+          .from("data")
+          .getPublicUrl(data.training_data);
 
-      setTestingUrl(test.publicUrl);
+        const { data: test } = supabase.storage
+          .from("data")
+          .getPublicUrl(data.testing_data);
 
-      setExpectedOutput(data.expected_output);
-    })();
+        if (!isMounted) return;
+
+        setTrainingUrl(train.publicUrl);
+        setTestingUrl(test.publicUrl);
+        setExpectedOutput(data.expected_output);
+        setIsUrlsReady(true);
+      } finally {
+        if (isMounted) {
+          setIsContentLoading(false);
+        }
+      }
+    };
+
+    loadProblemData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [data]);
 
   if (isLoading) {
@@ -182,7 +236,11 @@ function ProblemPage() {
               </div>
             )}
 
-            <Markdown>{statement}</Markdown>
+            {isContentLoading ? (
+              <LoadingPlaceholder />
+            ) : (
+              <Markdown>{statement}</Markdown>
+            )}
 
             {resources.length > 0 && (
               <div className="mt-8 space-y-4">
@@ -232,7 +290,18 @@ function ProblemPage() {
                   <a
                     href={trainingUrl}
                     download
-                    className="rounded-md border border-border px-3 py-2 text-sm hover:bg-secondary"
+                    aria-disabled={!isUrlsReady}
+                    tabIndex={isUrlsReady ? 0 : -1}
+                    onClick={(e) => {
+                      if (!isUrlsReady) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className={`rounded-md border border-border px-3 py-2 text-sm transition-colors ${
+                      isUrlsReady
+                        ? "hover:bg-secondary"
+                        : "cursor-not-allowed opacity-50"
+                    }`}
                   >
                     Download Training CSV
                   </a>
@@ -240,7 +309,18 @@ function ProblemPage() {
                   <a
                     href={testingUrl}
                     download
-                    className="rounded-md border border-border px-3 py-2 text-sm hover:bg-secondary"
+                    aria-disabled={!isUrlsReady}
+                    tabIndex={isUrlsReady ? 0 : -1}
+                    onClick={(e) => {
+                      if (!isUrlsReady) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className={`rounded-md border border-border px-3 py-2 text-sm transition-colors ${
+                      isUrlsReady
+                        ? "hover:bg-secondary"
+                        : "cursor-not-allowed opacity-50"
+                    }`}
                   >
                     Download Testing CSV
                   </a>
@@ -366,17 +446,23 @@ function ProblemPage() {
             {/* Solution */}
             {revealed && (
               <div className="rounded-lg border border-border bg-card">
-                <pre className="overflow-x-auto p-4 text-sm">
-                  <code>
-                    {solution}
-                  </code>
-                </pre>
-
-                {explanation && (
-                  <div className="border-t border-border px-4 py-3">
-                    <h3>Explanation</h3>
-                    <Markdown>{explanation}</Markdown>
+                {isContentLoading ? (
+                  <div className="p-4">
+                    <LoadingPlaceholder />
                   </div>
+                ) : (
+                  <>
+                    <pre className="overflow-x-auto p-4 text-sm">
+                      <code>{solution}</code>
+                    </pre>
+
+                    {explanation && (
+                      <div className="border-t border-border px-4 py-3">
+                        <h3>Explanation</h3>
+                        <Markdown>{explanation}</Markdown>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             )}
