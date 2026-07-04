@@ -13,8 +13,9 @@ function AboutPage() {
         <h1 className="text-2xl font-semibold tracking-tight">About TensorCode</h1>
         <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
           <p>
-            TensorCode is an AI learning and practice platform built to help students and professionals master AI/ML engineering skills. 
-            Our goal is to make 
+            TensorCode is an AI learning and practice platform built to help students and professionals master AI/ML engineering skills through
+            hands-on practice. 
+            Our goal is to make AI 
             Each problem ships with a clean reference solution and a short video walkthrough.
           </p>
           <p>
