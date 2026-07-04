@@ -37,7 +37,7 @@ function HomePage() {
       if (difficulty !== "All" && p.difficulty !== difficulty) return false;
       if (!needle) return true;
       return (
-        p.name.toLowerCase().includes(needle) || p.topic.toLowerCase()
+        p.name.toLowerCase().includes(needle) || p.topic.toLowerCase().includes(needle)
       );
     });
   }, [problems, searchQuery, difficulty]);
