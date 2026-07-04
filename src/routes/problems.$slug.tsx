@@ -483,7 +483,7 @@ function ProblemPage() {
                     </span>
 
                     <span className="font-medium">
-                      {result.raw_score result.status}
+                      {result.raw_score > 0.60 ? result.status : "Failed"}
                     </span>
                   </div>
 
