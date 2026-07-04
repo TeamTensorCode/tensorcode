@@ -17,10 +17,10 @@ function AboutPage() {
             hands-on coding practice. 
             Our goal is to make AI education practical, accessible, and effective by providing real-world datasets, Olympiad-style problems,
             and competitions to everyone.
-            Each problem ships with a clean reference solution and a short video walkthrough.
           </p>
           <p>
-            TensorCode provides an environment where learning comes from building, experimenting, and solving problems. We believe that the best way to learn AI is by doing, and we are committed to providing a platform that makes this possible.
+            TensorCode provides an environment where learning comes from building, experimenting, and solving problems. 
+            We believe that the best way to learn AI is by doing, and we are committed to providing a platform that makes this possible.
           </p>
           <p>
             Everything is free right now while we're testing demand. If this is useful to
