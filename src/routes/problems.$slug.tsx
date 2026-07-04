@@ -483,7 +483,7 @@ function ProblemPage() {
                     </span>
 
                     <span className="font-medium">
-                      {result.status}
+                      {result.raw_score result.status}
                     </span>
                   </div>
 
