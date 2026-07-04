@@ -15,7 +15,8 @@ function AboutPage() {
           <p>
             TensorCode is an AI learning and practice platform built to help students and professionals master AI/ML engineering skills through
             hands-on coding practice. 
-            Our goal is to make AI education practical, accessible, and effective by providing real-world datasets, Olympiad-style problems, and comprehensive learning resources.
+            Our goal is to make AI education practical, accessible, and effective by providing real-world datasets, Olympiad-style problems,
+            and competitions to everyone.
             Each problem ships with a clean reference solution and a short video walkthrough.
           </p>
           <p>
