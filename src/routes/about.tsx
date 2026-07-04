@@ -24,7 +24,7 @@ function AboutPage() {
             We believe that the best way to learn AI is by doing, and we are committed to providing a platform that makes this possible.
           </p>
           <p>
-            Everything is free under the basic tier. If this is useful to
+            Everything is free under the basic tier. The premium tier is currently under development. If this is useful to
             you, tell a friend.
           </p>
           <p>
