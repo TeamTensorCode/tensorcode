@@ -13,8 +13,8 @@ function AboutPage() {
         <h1 className="text-2xl font-semibold tracking-tight">About TensorCode</h1>
         <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
           <p>
-            TensorCode is a focused practice platform for AI/ML engineering interviews and
-            day-to-day fluency. Each problem ships with a clean reference solution and a
+            TensorCode is an AI. 
+            Each problem ships with a clean reference solution and a
             short video walkthrough.
           </p>
           <p>
