@@ -20,7 +20,7 @@ function AboutPage() {
             Each problem ships with a clean reference solution and a short video walkthrough.
           </p>
           <p>
-            TensorCode provides an environment where 
+            TensorCode provides an environment where learning comes from building, experimenting, and solving problems. We believe that the best way to learn AI is by doing, and we are committed to providing a platform that makes this possible.
           </p>
           <p>
             Everything is free right now while we're testing demand. If this is useful to
