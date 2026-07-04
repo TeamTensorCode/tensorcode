@@ -20,6 +20,7 @@ function AboutPage() {
           </p>
           <p>
             TensorCode provides an environment where learning comes from building, experimenting, and solving problems. 
+            Each problem ships with a clean reference solution and a short explanation.
             We believe that the best way to learn AI is by doing, and we are committed to providing a platform that makes this possible.
           </p>
           <p>
