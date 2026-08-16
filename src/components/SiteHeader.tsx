@@ -9,7 +9,7 @@ export function SiteHeader() {
         {/* Logo + brand name */}
         <Link to="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
           <img
-            src="/logo.png"
+            src="/icon.png"
             alt="TensorCode logo"
             className="h-8 w-auto"
             loading="eager"
